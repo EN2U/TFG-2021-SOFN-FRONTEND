@@ -1,21 +1,12 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated style="height:55px">
       <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="leftDrawerOpen = !leftDrawerOpen"
-        />
-
         <q-toolbar-title>
-          Quasar App
+          Spanish Open Food Network
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-btn>{{ $t("signup") }}</q-btn>
+        <q-btn>{{ $t("login") }}</q-btn>
       </q-toolbar>
     </q-header>
 
@@ -23,14 +14,20 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      :mini="miniState"
+      :mini-width="55"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+      mini-to-overlay
+      :width="255"
+      :breakpoint="500"
+      content-class="bg-primary text-white"
     >
       <q-list>
         <q-item-label
           header
           class="text-grey-8"
         >
-          Essential Links
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -99,7 +96,8 @@ export default {
   components: { EssentialLink },
   data () {
     return {
-      leftDrawerOpen: false,
+      miniState: true,
+      leftDrawerOpen: true,
       essentialLinks: linksData
     }
   }
