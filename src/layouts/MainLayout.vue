@@ -7,7 +7,7 @@
     >
       <q-toolbar>
         <q-toolbar-title>
-          Spanish Open Food Network
+          {{ $t("proyectTitle") }}
         </q-toolbar-title>
         <EssentialLink
           v-for="link in linksNavbar"
@@ -54,11 +54,11 @@ import EssentialLink from "components/EssentialLink.vue"
 
 const linksNavbar = [
   {
-    title: "login",
+    title: "Login",
     to: "login"
   },
   {
-    title: "register",
+    title: "Register",
     to: "register"
   }
 ]
