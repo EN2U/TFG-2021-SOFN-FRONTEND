@@ -1,8 +1,9 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header
+      class="flex bg-red-5"
       elevated
-      style="height:55px"
+      style="height: 65px"
     >
       <q-toolbar>
         <q-toolbar-title>
@@ -25,7 +26,7 @@
       mini-to-overlay
       :width="255"
       :breakpoint="500"
-      content-class="bg-primary text-white"
+      content-class="bg-red-5"
       @mouseover="miniState = false"
       @mouseout="miniState = true"
     >

@@ -2,7 +2,8 @@
   <q-item
     clickable
     tag="a"
-    active-class="text-secondary bg-yellow"
+    class="text-white"
+    active-class="text-black bg-yellow-14"
     :to="to"
   >
     <q-item-section
@@ -13,7 +14,9 @@
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
+      <q-item-label>
+        {{ title }}
+      </q-item-label>
       <q-item-label caption>
         {{ caption }}
       </q-item-label>
