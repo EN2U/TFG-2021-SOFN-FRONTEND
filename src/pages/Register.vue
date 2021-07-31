@@ -114,4 +114,5 @@ export default {
   .loginCardSize
     width: 35%
     height: 45%
+
 </style>

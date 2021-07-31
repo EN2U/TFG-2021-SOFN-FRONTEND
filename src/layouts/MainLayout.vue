@@ -54,6 +54,10 @@ import EssentialLink from "components/EssentialLink.vue"
 
 const linksNavbar = [
   {
+    title: "About",
+    to: "about"
+  },
+  {
     title: "Login",
     to: "login"
   },
