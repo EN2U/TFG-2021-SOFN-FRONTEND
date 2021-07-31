@@ -35,8 +35,8 @@ module.exports = function (/* ctx */) {
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
       // 'ionicons-v4',
-      // 'mdi-v5',
-      // 'fontawesome-v5',
+      'mdi-v5',
+      'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -68,6 +68,7 @@ module.exports = function (/* ctx */) {
 
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+
       chainWebpack (chain) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: ['js', 'vue'] }])
@@ -84,7 +85,7 @@ module.exports = function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
+      lang: 'es', // Quasar language pack
       config: {},
 
       // Possible values for "importStrategy":
@@ -100,7 +101,7 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: ["Notify"]
     },
 
     // animations: 'all', // --- includes all animations
@@ -115,7 +116,10 @@ module.exports = function (/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true
+      }, // only for GenerateSW
       manifest: {
         name: 'Quasar App',
         short_name: 'Quasar App',

@@ -5,6 +5,6 @@ export default {
   failed: "Action failed",
   success: "Action was successful",
   login: "Login",
-  signUp: "signup",
+  signup: "signup",
   proyectTitle: "Spanish Open Food Network"
 }

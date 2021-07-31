@@ -8,13 +8,11 @@
         <q-toolbar-title>
           Spanish Open Food Network
         </q-toolbar-title>
-        <q-btn>{{ $t("signup") }}</q-btn>
-        <q-btn>
-          <EssentialLink
-            :key="login.title"
-            v-bind="login"
-          />
-        </q-btn>
+        <EssentialLink
+          v-for="link in linksNavbar"
+          :key="link.title"
+          v-bind="link"
+        />
       </q-toolbar>
     </q-header>
 
@@ -53,52 +51,57 @@
 <script>
 import EssentialLink from "components/EssentialLink.vue"
 
-const login = {
-  title: "login",
-  link: "login"
-}
-
+const linksNavbar = [
+  {
+    title: "login",
+    to: "login"
+  },
+  {
+    title: "register",
+    to: "register"
+  }
+]
 const linksData = [
   {
     title: "Docs",
     caption: "quasar.dev",
-    link: "https://quasar.dev"
+    to: "https://quasar.dev"
   },
   {
     title: "Github",
     caption: "github.com/quasarframework",
     icon: "code",
-    link: "https://github.com/quasarframework"
+    to: "https://github.com/quasarframework"
   },
   {
     title: "Discord Chat Channel",
     caption: "chat.quasar.dev",
     icon: "chat",
-    link: "https://chat.quasar.dev"
+    to: "https://chat.quasar.dev"
   },
   {
     title: "Forum",
     caption: "forum.quasar.dev",
     icon: "record_voice_over",
-    link: "https://forum.quasar.dev"
+    to: "https://forum.quasar.dev"
   },
   {
     title: "Twitter",
     caption: "@quasarframework",
     icon: "rss_feed",
-    link: "https://twitter.quasar.dev"
+    to: "https://twitter.quasar.dev"
   },
   {
     title: "Facebook",
     caption: "@QuasarFramework",
     icon: "public",
-    link: "https://facebook.quasar.dev"
+    to: "https://facebook.quasar.dev"
   },
   {
     title: "Quasar Awesome",
     caption: "Community Quasar projects",
     icon: "favorite",
-    link: "https://awesome.quasar.dev"
+    to: "https://awesome.quasar.dev"
   }
 ]
 
@@ -110,7 +113,7 @@ export default {
       miniState: true,
       leftDrawerOpen: true,
       essentialLinks: linksData,
-      login: login
+      linksNavbar: linksNavbar
     }
   }
 }
