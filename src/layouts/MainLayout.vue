@@ -1,12 +1,20 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated style="height:55px">
+    <q-header
+      elevated
+      style="height:55px"
+    >
       <q-toolbar>
         <q-toolbar-title>
           Spanish Open Food Network
         </q-toolbar-title>
         <q-btn>{{ $t("signup") }}</q-btn>
-        <q-btn>{{ $t("login") }}</q-btn>
+        <q-btn>
+          <EssentialLink
+            :key="login.title"
+            v-bind="login"
+          />
+        </q-btn>
       </q-toolbar>
     </q-header>
 
@@ -16,19 +24,18 @@
       bordered
       :mini="miniState"
       :mini-width="55"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
       mini-to-overlay
       :width="255"
       :breakpoint="500"
       content-class="bg-primary text-white"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
     >
       <q-list>
         <q-item-label
           header
           class="text-grey-8"
-        >
-        </q-item-label>
+        />
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
@@ -44,61 +51,66 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue"
+
+const login = {
+  title: "login",
+  link: "login"
+}
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Docs",
+    caption: "quasar.dev",
+    link: "https://quasar.dev"
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Github",
+    caption: "github.com/quasarframework",
+    icon: "code",
+    link: "https://github.com/quasarframework"
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Discord Chat Channel",
+    caption: "chat.quasar.dev",
+    icon: "chat",
+    link: "https://chat.quasar.dev"
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Forum",
+    caption: "forum.quasar.dev",
+    icon: "record_voice_over",
+    link: "https://forum.quasar.dev"
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Twitter",
+    caption: "@quasarframework",
+    icon: "rss_feed",
+    link: "https://twitter.quasar.dev"
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: "Facebook",
+    caption: "@QuasarFramework",
+    icon: "public",
+    link: "https://facebook.quasar.dev"
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    title: "Quasar Awesome",
+    caption: "Community Quasar projects",
+    icon: "favorite",
+    link: "https://awesome.quasar.dev"
   }
 ]
 
 export default {
-  name: 'MainLayout',
+  name: "MainLayout",
   components: { EssentialLink },
   data () {
     return {
       miniState: true,
       leftDrawerOpen: true,
-      essentialLinks: linksData
+      essentialLinks: linksData,
+      login: login
     }
   }
 }

@@ -2,9 +2,9 @@
 // so you can safely delete all default props below
 
 export default {
-  failed: 'Action failed',
-  success: 'Action was successful',
-  login: 'Login',
-  signUp: 'signup',
-  proyectTitle: 'Spanish Open Food Network'
+  failed: "Action failed",
+  success: "Action was successful",
+  login: "Login",
+  signUp: "signup",
+  proyectTitle: "Spanish Open Food Network"
 }
