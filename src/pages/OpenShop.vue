@@ -45,8 +45,22 @@
           size="xl"
           color="red-5"
           :label="$t('signup.title')"
+          @click="$router.push('/enterprise/register')"
         />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: "OpenShop",
+
+  methods: {
+    enterpriseRegister () {
+      this.$router.push("/enterprise/register")
+    }
+  }
+}
+</script>

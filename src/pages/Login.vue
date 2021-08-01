@@ -36,6 +36,7 @@
               color="red-5"
               class="bg-white"
               type="password"
+              autocomplete="on"
               :label="$t('password')"
             />
           </q-form>

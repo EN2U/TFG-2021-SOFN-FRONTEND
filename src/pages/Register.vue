@@ -30,6 +30,7 @@
               type="email"
               clearable
               label="E-mail"
+              autocomplete="on"
               :rules="[
                 val => $v.email.required || $t('signup.errorForm.fieldMissing'),
                 val => $v.email.email || $t('signup.errorForm.emailFormat'),
@@ -47,6 +48,7 @@
               color="red-5"
               class="bg-white"
               type="password"
+              autocomplete="on"
               :rules="[
                 val => $v.password.required || $t('signup.errorForm.fieldMissing'),
                 val => $v.password.minLength || $t('signup.errorForm.passwordLength'),
@@ -64,6 +66,7 @@
               color="red-5"
               class="bg-white"
               type="password"
+              autocomplete="on"
               :rules="[
                 val => $v.confirmPassword.required || $t('signup.errorForm.fieldMissing'),
                 val => $v.confirmPassword.sameAsPassword || $t('signup.errorForm.passwordNotMatch'),

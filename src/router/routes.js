@@ -31,12 +31,12 @@ const routes = [
       },
       {
         path: "enterprise/profile",
-        name: "profile",
+        name: "enterprise-profile",
         component: () => import("src/pages/EnterpriseProfile.vue")
       },
       {
         path: "enterprise/register",
-        name: "register",
+        name: "enterprise-register",
         component: () => import("src/pages/EnterpriseRegister.vue")
       }
     ]
