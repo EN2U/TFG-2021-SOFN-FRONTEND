@@ -30,9 +30,26 @@ const routes = [
         component: () => import("src/pages/OpenShop.vue")
       },
       {
-        path: "enterprise/profile",
-        name: "enterprise-profile",
-        component: () => import("src/pages/EnterpriseProfile.vue")
+        path: "enterprise",
+        name: "enterprise",
+        component: () => import("src/pages/Enterprise.vue"),
+        children: [
+          {
+            path: "dashboard",
+            name: "dashboard",
+            component: () => import("src/pages/EnterpriseDashboard.vue")
+          },
+          {
+            path: "profile",
+            name: "profile",
+            component: () => import("src/pages/EnterpriseProfile.vue")
+          },
+          {
+            path: "products",
+            name: "products",
+            component: () => import("src/pages/EnterpriseProducts.vue")
+          }
+        ]
       },
       {
         path: "enterprise/register",

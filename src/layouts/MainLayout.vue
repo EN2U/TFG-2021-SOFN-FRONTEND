@@ -77,7 +77,7 @@ const linksData = [
     title: "Nombre de la empresa",
     caption: "Acceda a su perfil de empresa",
     icon: "perm_identity",
-    to: "/enterprise/profile"
+    to: "/enterprise/"
   },
   {
     title: "Discord Chat Channel",

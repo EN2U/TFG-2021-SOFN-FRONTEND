@@ -433,7 +433,7 @@
             <q-btn
               color="deep-orange"
               :label="step === 6 ? 'Finish' : 'Continue'"
-              @click="step === 6 ? $router.push('/enterprise/profile') : $refs.stepper.next()"
+              @click="step === 6 ? $router.push('/enterprise/') : $refs.stepper.next()"
             />
             <q-btn
               v-if="step > 1"
