@@ -209,13 +209,231 @@
             </div>
           </div>
         </q-step>
-
+        <q-step
+          :name="4"
+          title="About"
+          icon="manage_accounts"
+          :done="step > 4"
+        >
+          <div class="column flex items-center">
+            <div class="flex column">
+              <div class="q-mb-md text-center">
+                <span class="text-h4 text-bold">Perfecto</span>
+              </div>
+              <div class="q-mb-md text-center">
+                <span class="text-subtitle1">Registro completado, indique los detalles de la empresa:</span>
+              </div>
+            </div>
+            <div class="row q-pt-lg full-width">
+              <q-input
+                color="purple-12"
+                label="Descripción corta"
+                class="col-8 q-px-md"
+              >
+                <template #prepend>
+                  <q-icon name="home" />
+                </template>
+              </q-input>
+              <q-input
+                color="purple-12"
+                label="Número de compañía"
+                class="col-4 q-px-md"
+              >
+                <template #prepend>
+                  <q-icon name="drafts" />
+                </template>
+              </q-input>
+            </div>
+            <div class="row q-pt-lg full-width">
+              <q-input
+                color="purple-12"
+                label="Descripción larga"
+                type="textarea"
+                class="col-8 q-px-md"
+              >
+                <template #prepend>
+                  <q-icon name="home" />
+                </template>
+              </q-input>
+              <q-input
+                color="purple-12"
+                label="Número de caridad "
+                class="col-4 q-px-md"
+              >
+                <template #prepend>
+                  <q-icon name="flag" />
+                </template>
+              </q-input>
+            </div>
+          </div>
+        </q-step>
+        <q-step
+          :name="5"
+          title="About"
+          icon="manage_accounts"
+          :done="step > 5"
+        >
+          <div class="column flex items-center">
+            <div class="flex column">
+              <div class="q-mb-md text-center">
+                <span class="text-h4 text-bold">Perfecto</span>
+              </div>
+              <div class="q-mb-md text-center">
+                <span class="text-subtitle1">Registro completado, indique los detalles de la empresa:</span>
+              </div>
+            </div>
+            <div class=" column items-center full-width">
+              <div
+                class="column items-center q-py-lg q-pl-md"
+                style="width: 50%"
+              >
+                <div
+                  style="max-width: 300px; max-height: 300px;"
+                  @click="choosepicture"
+                >
+                  <q-btn
+                    class="hint bg-purple-12 text-white full-width"
+                    style="cursor: pointer"
+                  >
+                    Escoge tu logo (300 X 300px)
+                  </q-btn>
+                  <input
+                    ref="fileInput"
+                    hidden
+                    class="file-input"
+                    type="file"
+                    @input="onSelectFile"
+                  >
+                </div>
+                <div
+                  style="max-width: 300px; max-height: 300px;"
+                  class="q-py-lg  full-width "
+                >
+                  <q-img
+                    :src="imageData"
+                    @click="choosepicture"
+                  />
+                </div>
+              </div>
+              <div
+                class="column items-center q-pt-lg q-pl-md"
+                style="width: 50%"
+              >
+                <div
+                  style="max-width: 300px; max-height: 300px;"
+                  @click="choosepicture"
+                >
+                  <q-btn
+                    class="hint bg-purple-12 text-white full-width"
+                    style="cursor: pointer"
+                  >
+                    Escoge tu banner (1260 x 260 px)
+                  </q-btn>
+                  <input
+                    ref="fileInput"
+                    hidden
+                    class="file-input"
+                    type="file"
+                    @input="onSelectFile"
+                  >
+                </div>
+                <div
+                  style="max-width: 1260px; max-height: 260px;"
+                  class="q-py-lg full-width "
+                >
+                  <q-img
+                    :src="imageData"
+                    @click="choosepicture"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </q-step>
+        <q-step
+          :name="6"
+          title="Redes sociales"
+          icon="add_comment"
+          :done="step > 6"
+        >
+          <div class="column flex items-center">
+            <div class="flex column">
+              <div class="q-mb-md text-center">
+                <span class="text-h4 text-bold">Último paso!</span>
+              </div>
+              <div class="q-mb-md text-center">
+                <span class="text-subtitle1">Incluya las redes sociales de "empresa":</span>
+              </div>
+            </div>
+            <div class="full-width">
+              <div class="row ">
+                <q-input
+                  color="purple-12"
+                  label="Página Web"
+                  style="min-width: 300px; width: 60%"
+                  hint="ej: google.com"
+                  class=" q-pt-sm q-px-md"
+                >
+                  <template #prepend>
+                    <q-icon name="domain" />
+                  </template>
+                </q-input>
+                <q-input
+                  color="purple-12"
+                  label="Twitter"
+                  style="min-width: 300px; width: 40%"
+                  hint="ej: @twitter_handle"
+                  class=" q-pt-sm q-px-md"
+                >
+                  <template #prepend>
+                    <q-icon name="domain" />
+                  </template>
+                </q-input>
+              </div>
+              <div class="row ">
+                <q-input
+                  color="purple-12"
+                  label="Facebook"
+                  style="min-width: 300px; width: 60%"
+                  hint="ej: www.facebook.com/NombreDeUsuario"
+                  class=" q-pt-sm q-px-md"
+                >
+                  <template #prepend>
+                    <q-icon name="domain" />
+                  </template>
+                </q-input>
+                <q-input
+                  color="purple-12"
+                  label="Instagram"
+                  style="min-width: 300px; width: 40%"
+                  hint="ej: @intragram_handle"
+                  class=" q-pt-sm q-px-md"
+                >
+                  <template #prepend>
+                    <q-icon name="domain" />
+                  </template>
+                </q-input>
+              </div>
+              <q-input
+                color="purple-12"
+                label="Linkedin"
+                style="min-width: 300px; width: 60%"
+                class=" q-pt-sm q-px-md"
+                hint="ej: www.linkedin.com/NombreDeUsuario"
+              >
+                <template #prepend>
+                  <q-icon name="domain" />
+                </template>
+              </q-input>
+            </div>
+          </div>
+        </q-step>
         <template #navigation>
           <q-stepper-navigation>
             <q-btn
               color="deep-orange"
-              :label="step === 3 ? 'Finish' : 'Continue'"
-              @click="$refs.stepper.next()"
+              :label="step === 6 ? 'Finish' : 'Continue'"
+              @click="step === 6 ? $router.push('/enterprise/profile') : $refs.stepper.next()"
             />
             <q-btn
               v-if="step > 1"
@@ -237,7 +455,26 @@
 export default {
   data () {
     return {
-      step: 1
+      step: 1,
+      imageData: null
+    }
+  },
+  methods: {
+    onSelectFile () {
+      const input = this.$refs.fileInput
+      const files = input.files
+      this.FileImage = files[0]
+      if (files && files[0]) {
+        const reader = new FileReader()
+        reader.onload = e => {
+          this.imageData = e.target.result
+        }
+        reader.readAsDataURL(files[0])
+        this.$emit("input", files[0])
+      }
+    },
+    choosepicture () {
+      this.$refs.fileInput.click()
     }
   }
 }
