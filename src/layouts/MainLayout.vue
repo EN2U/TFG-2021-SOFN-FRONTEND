@@ -55,28 +55,29 @@ import EssentialLink from "components/EssentialLink.vue"
 const linksNavbar = [
   {
     title: "About",
-    to: "about"
+    to: "/about"
   },
   {
     title: "Login",
-    to: "login"
+    to: "/user/login"
   },
   {
     title: "Register",
-    to: "register"
+    to: "/user/register"
   }
 ]
 const linksData = [
   {
-    title: "Docs",
-    caption: "quasar.dev",
-    to: "https://quasar.dev"
+    title: "Empresa",
+    caption: "Abrir mi tienda",
+    to: "/open-shop",
+    icon: "business"
   },
   {
-    title: "Github",
-    caption: "github.com/quasarframework",
-    icon: "code",
-    to: "https://github.com/quasarframework"
+    title: "Nombre de la empresa",
+    caption: "Acceda a su perfil de empresa",
+    icon: "perm_identity",
+    to: "/enterprise/profile"
   },
   {
     title: "Discord Chat Channel",

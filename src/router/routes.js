@@ -10,19 +10,34 @@ const routes = [
         component: () => import("pages/Index.vue")
       },
       {
-        path: "/login",
+        path: "user/login",
         name: "login",
         component: () => import("src/pages/Login.vue")
       },
       {
-        path: "/register",
+        path: "user/register",
         name: "register",
         component: () => import("src/pages/Register.vue")
       },
       {
-        path: "/about",
+        path: "about",
         name: "about",
         component: () => import("src/pages/About.vue")
+      },
+      {
+        path: "open-shop",
+        name: "open-shop",
+        component: () => import("src/pages/OpenShop.vue")
+      },
+      {
+        path: "enterprise/profile",
+        name: "profile",
+        component: () => import("src/pages/EnterpriseProfile.vue")
+      },
+      {
+        path: "enterprise/register",
+        name: "register",
+        component: () => import("src/pages/EnterpriseRegister.vue")
       }
     ]
   },

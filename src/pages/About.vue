@@ -17,8 +17,8 @@
     >
       <div class="col-6 flex justify-center items-center">
         <q-img
-          style="height: 300px; width: 50%"
-          src="../assets/farmer-1.1s-47px.svg"
+          style="height: 350px; width: 40%"
+          src="../assets/farmer.png"
         />
       </div>
       <div class="col-6">
