@@ -1,17 +1,25 @@
 <template>
-  <div class="q-pa-xl column justify-center full-width">
-    <q-toolbar class="flex-center ">
+  <div class="column justify-center full-width">
+    <q-toolbar class="flex-center bg-red-4 ">
       <div
         v-for="link in links"
         :key="link.title"
         class="q-px-xl"
       >
         <EssentialLink
-          class="q-px-xl text-h4 bg-red-5"
+          round
+          class="q-px-xl text-h6 "
           v-bind="link"
         />
       </div>
     </q-toolbar>
+    <q-tabs align="center">
+      <q-route-tab
+        class="text-blue"
+        to="/open-shop"
+        label="Back to the main page..."
+      />
+    </q-tabs>
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -24,15 +32,15 @@ import EssentialLink from "components/EssentialLink.vue"
 const links = [
   {
     title: "Dashboard",
-    to: "dashboard"
+    to: "/enterprise/dashboard"
   },
   {
     title: "Products",
-    to: "products"
+    to: "/enterprise/products"
   },
   {
     title: "Profile",
-    to: "profile"
+    to: "/enterprise/profile"
   }
 ]
 
@@ -41,7 +49,11 @@ export default {
   components: { EssentialLink },
   data () {
     return {
-      links: links
+      links: links,
+      back: {
+        title: "Back to the main page...",
+        to: "/open-shop"
+      }
     }
   }
 }

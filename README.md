@@ -2,6 +2,8 @@
 
 Prototipo de sistema para la recopilación y estandarización para la planificación y evaluación de menús escolares saludables, sostenibles y de calidad
 
+Para visualizar el desarrollo del proyecto a nivel de FrontEnd entre al siguiente enlace: [SOFN](SOFN.surge.sh)
+
 ## Install the dependencies
 ```bash
 yarn

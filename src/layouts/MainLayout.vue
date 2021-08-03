@@ -16,8 +16,8 @@
         />
       </q-toolbar>
     </q-header>
-
     <q-drawer
+      v-if="!($route.path.indexOf('/enterprise/') > -1)"
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -77,7 +77,7 @@ const linksData = [
     title: "Nombre de la empresa",
     caption: "Acceda a su perfil de empresa",
     icon: "perm_identity",
-    to: "/enterprise/"
+    to: "/enterprise/dashboard"
   },
   {
     title: "Discord Chat Channel",
@@ -123,4 +123,5 @@ export default {
     }
   }
 }
+
 </script>

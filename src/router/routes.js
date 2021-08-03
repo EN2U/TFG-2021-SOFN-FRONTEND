@@ -32,7 +32,7 @@ const routes = [
       {
         path: "enterprise",
         name: "enterprise",
-        component: () => import("src/pages/Enterprise.vue"),
+        component: () => import("layouts/EnterpriseLayout.vue"),
         children: [
           {
             path: "dashboard",
@@ -48,6 +48,11 @@ const routes = [
             path: "products",
             name: "products",
             component: () => import("src/pages/EnterpriseProducts.vue")
+          },
+          {
+            path: "products/new",
+            name: "new",
+            component: () => import("src/pages/EnterpriseNewProduct.vue")
           }
         ]
       },
