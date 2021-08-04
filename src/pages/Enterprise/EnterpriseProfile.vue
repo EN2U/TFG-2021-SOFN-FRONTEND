@@ -6,6 +6,7 @@
     <div class="row full-width">
       <q-splitter
         v-model="splitterModel"
+        class="q-pt-lg full-width"
       >
         <template #before>
           <q-tabs
@@ -15,15 +16,38 @@
           >
             <q-tab
               name="primaryDetails"
+              icon="details"
               label="Detalles principales"
             />
             <q-tab
-              name="alarms"
-              label="Alarms"
+              name="address"
+              icon="map"
+              label="Dirección"
             />
             <q-tab
-              name="movies"
-              label="Movies"
+              name="contact"
+              icon="contact_mail"
+              label="Contacto"
+            />
+            <q-tab
+              name="social"
+              icon="groups"
+              label="Social"
+            />
+            <q-tab
+              name="about"
+              icon="info"
+              label="About"
+            />
+            <q-tab
+              name="images"
+              icon="image"
+              label="Imagenes"
+            />
+            <q-tab
+              name="user"
+              icon="person"
+              label="User"
             />
           </q-tabs>
         </template>
@@ -35,31 +59,32 @@
             swipeable
             vertical
             transition-prev="jump-up"
-            transition-next="jump-up"
+            transition-next="jump-down"
           >
             <q-tab-panel name="primaryDetails">
-              <div class="text-h4 q-mb-md">
-                Mails
-              </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+              <PrimaryDetails />
             </q-tab-panel>
 
-            <q-tab-panel name="alarms">
-              <div class="text-h4 q-mb-md">
-                Alarms
-              </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <q-tab-panel name="address">
+              <Address />
             </q-tab-panel>
 
-            <q-tab-panel name="movies">
-              <div class="text-h4 q-mb-md">
-                Movies
-              </div>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla ullam. In, libero.</p>
+            <q-tab-panel name="contact">
+              <Contact />
+            </q-tab-panel>
+            <q-tab-panel name="social">
+              <Social />
+            </q-tab-panel>
+            <q-tab-panel name="about">
+              <About />
+            </q-tab-panel>
+
+            <q-tab-panel name="images">
+              <Images />
+            </q-tab-panel>
+
+            <q-tab-panel name="user">
+              <User />
             </q-tab-panel>
           </q-tab-panels>
         </template>
@@ -69,11 +94,27 @@
 </template>
 
 <script>
+import About from "components/EnterpriseProfile/About"
+import PrimaryDetails from "components/EnterpriseProfile/PrimaryDetails"
+import Social from "components/EnterpriseProfile/Social"
+import Images from "components/EnterpriseProfile/Images"
+import Address from "components/EnterpriseProfile/Address"
+import Contact from "components/EnterpriseProfile/Contact"
+import User from "components/EnterpriseProfile/User"
 
 export default {
+  components: {
+    About,
+    User,
+    PrimaryDetails,
+    Social,
+    Contact,
+    Images,
+    Address
+  },
   data () {
     return {
-      tab: "alarms",
+      tab: "primaryDetails",
       splitterModel: 20
     }
   }
