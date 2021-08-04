@@ -37,29 +37,29 @@ const routes = [
           {
             path: "dashboard",
             name: "dashboard",
-            component: () => import("src/pages/EnterpriseDashboard.vue")
+            component: () => import("src/pages/Enterprise/EnterpriseDashboard.vue")
           },
           {
             path: "profile",
             name: "profile",
-            component: () => import("src/pages/EnterpriseProfile.vue")
+            component: () => import("src/pages/Enterprise/EnterpriseProfile.vue")
           },
           {
             path: "products",
             name: "products",
-            component: () => import("src/pages/EnterpriseProducts.vue")
+            component: () => import("src/pages/Enterprise/EnterpriseProducts.vue")
           },
           {
             path: "products/new",
             name: "new",
-            component: () => import("src/pages/EnterpriseNewProduct.vue")
+            component: () => import("src/pages/Enterprise/EnterpriseNewProduct.vue")
           }
         ]
       },
       {
         path: "enterprise/register",
         name: "enterprise-register",
-        component: () => import("src/pages/EnterpriseRegister.vue")
+        component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
       }
     ]
   },

@@ -48,6 +48,39 @@
           />
         </div>
       </div>
+      <div class="q-pt-md">
+        <q-input
+          color="purple-12"
+          label="Descripción del producto"
+          type="textarea"
+          class="col-8 q-px-md"
+        />
+      </div>
+      <div class="q-pt-md row justify-end">
+        <q-btn
+          class="q-mr-md"
+          color="primary"
+          @click="$router.push('/enterprise/products')"
+        >
+          <q-icon
+            name="check"
+            size="xs"
+          />
+          <span class="text-subtitle2">Crear</span>
+        </q-btn>
+        <q-btn
+          color="primary"
+          @click="$router.push('/enterprise/products')"
+        >
+          <q-icon
+            name="close"
+            size="xs"
+          />
+          <span
+            class="text-subtitle2"
+          >Borrar</span>
+        </q-btn>
+      </div>
     </div>
     <div
       class="q-pa-xl col-4 items-center column"
