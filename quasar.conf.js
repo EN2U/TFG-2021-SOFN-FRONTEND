@@ -25,7 +25,8 @@ module.exports = function (/* ctx */) {
       "axios",
       "utils",
       "const",
-      "vuelidate"
+      "vuelidate",
+      "lodash"
     ],
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css

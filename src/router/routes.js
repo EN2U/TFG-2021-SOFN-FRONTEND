@@ -60,6 +60,11 @@ const routes = [
         path: "enterprise/register",
         name: "enterprise-register",
         component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
+      },
+      {
+        path: "search",
+        name: "search",
+        component: () => import("src/pages/ProductSearch.vue")
       }
     ]
   },

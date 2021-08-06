@@ -1,5 +1,8 @@
 import Vue from "vue"
 import Vuex from "vuex"
+import createPersistedState from "vuex-persistedstate"
+
+import ProductSearch from "./ProductSearch"
 
 // import example from './module-example'
 
@@ -17,11 +20,13 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
+      ProductSearch
       // example
     },
 
     // enable strict mode (adds overhead!)
     // for dev mode only
+    plugins: [createPersistedState()],
     strict: process.env.DEBUGGING
   })
 

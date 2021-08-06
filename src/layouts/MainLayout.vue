@@ -78,6 +78,12 @@ const linksData = [
     caption: "Acceda a su perfil de empresa",
     icon: "perm_identity",
     to: "/enterprise/dashboard"
+  },
+  {
+    title: "Buscador",
+    caption: "xd",
+    icon: "search",
+    to: "search"
   }
 ]
 
