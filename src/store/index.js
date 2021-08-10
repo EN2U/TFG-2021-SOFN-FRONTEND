@@ -3,6 +3,7 @@ import Vuex from "vuex"
 import createPersistedState from "vuex-persistedstate"
 
 import ProductSearch from "./ProductSearch"
+import Register from "./Register"
 
 // import example from './module-example'
 
@@ -20,8 +21,8 @@ Vue.use(Vuex)
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      ProductSearch
-      // example
+      ProductSearch,
+      Register
     },
 
     // enable strict mode (adds overhead!)

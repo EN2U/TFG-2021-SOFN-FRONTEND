@@ -17,7 +17,7 @@
       </q-toolbar>
     </q-header>
     <q-drawer
-      v-if="!($route.path.indexOf('/enterprise/') > -1)"
+      v-if="!($route.path.indexOf('/enterprise/') > -1 && !($route.path.indexOf('/enterprise/register') > -1))"
       v-model="leftDrawerOpen"
       show-if-above
       bordered

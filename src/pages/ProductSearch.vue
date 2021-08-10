@@ -30,23 +30,10 @@
           class="q-mt-xl full-width row justify-around"
         >
           <div
-            v-for="product in test"
+            v-for="product in openFoodFactsObject.data"
             :key="product._id"
           >
-            <q-card
-              style="width: 250px; height: 250px"
-              class="row items-center justify-center"
-            >
-              <q-card-section
-                class="bg-red"
-                style="height: 70%; width: 70%"
-              >
-                Aqui la imagen
-              </q-card-section>
-              <q-card-section>
-                Aqui el nombre del producto
-              </q-card-section>
-            </q-card>
+            <ProductCard :product-data="product" />
           </div>
         </div>
       </div>
@@ -55,9 +42,11 @@
 </template>
 
 <script>
+import ProductCard from "components/ProductSearch/ProductCard"
 
 export default {
   name: "ProductSearch",
+  components: { ProductCard },
   data () {
     return {
       openFoodFactsObject: null,
