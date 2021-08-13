@@ -2,7 +2,6 @@ import ProductSearchSvc from "src/js/services/ProductSearch"
 
 export async function getOpenFoodFactsProducts (context, payload) {
   try {
-    console.log(console.log(payload))
     const response = await ProductSearchSvc.getOpenFoodFactsProducts(payload)
     if (response.status === 200 || response.status === 204) return response.data
   } catch (error) {

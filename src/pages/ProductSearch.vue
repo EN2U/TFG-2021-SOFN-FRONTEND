@@ -25,7 +25,10 @@
         class="full-width q-mt-xl"
         color="primary"
       />
-      <div class="full-width ">
+      <div
+        v-if="openFoodFactsObject"
+        class="full-width"
+      >
         <div
           class="q-mt-xl full-width row justify-around"
         >
@@ -57,7 +60,6 @@ export default {
     }
   },
   async mounted () {
-    console.log("xd")
     this.openFoodFactsObject = await this.$store.dispatch("ProductSearch/getOpenFoodFactsProducts", { page: this.page })
     this.page += 1
     this.test = this.openFoodFactsObject.data.slice(0, 4)

@@ -20,7 +20,7 @@
             :name.sync="name"
             :address1.sync="address1"
             :address2.sync="address2"
-            :city.sync="city"
+            :province.sync="province"
             :zip.sync="zip"
             :country.sync="country"
           />
@@ -53,7 +53,11 @@
           icon="manage_accounts"
           :done="step > 4"
         >
-          <EnterpriseDetails />
+          <EnterpriseDetails
+            :company-number.sync="companyNumber"
+            :long-description.sync="longDescription"
+            :short-description.sync="shortDescription"
+          />
         </q-step>
         <q-step
           :name="5"
@@ -120,26 +124,59 @@ export default {
       name: "",
       address1: "",
       address2: "",
-      city: "",
+      province: "",
       zip: "",
       country: "",
       contact: "",
       email: "",
       phone: "",
-      isProductor: ""
+      isProductor: "",
 
+      longDescription: "",
+      shortDescription: "",
+      companyNumber: ""
+    }
+  },
+  computed: {
+    generateEnterpriseObject () {
+      return {
+        name: this.name,
+
+        address: {
+          first_address: this.address1,
+          second_address: this.address2,
+          province: this.province,
+          zip_code: this.zip,
+          country: this.country
+        },
+
+        owner: this.contact,
+        email: this.email,
+        contact_phone: Number(this.phone),
+        user_id: "6112ba394ba4edcce075f715",
+        is_productor: this.isProductor === "productor"
+      }
+    },
+    createEnterpriseDetails () {
+      return {
+        owner: this.contact,
+        name: this.name,
+
+        company_number: this.companyNumber,
+        short_description: this.shortDescription,
+        long_description: this.longDescription
+      }
     }
   },
   methods: {
     setProductor (val) {
       this.isProductor = val
-      console.log(val, this.isProductor)
     },
-    evaluateStepper () {
+    async evaluateStepper () {
       if (this.step === 1) {
         if (this.name !== "" &&
         this.address1 !== "" &&
-        this.city !== "" &&
+        this.province !== "" &&
         this.zip !== "" &&
         this.country !== ""
         ) this.$refs.stepper.next()
@@ -148,10 +185,23 @@ export default {
         this.email !== "" &&
         this.phone !== "") this.$refs.stepper.next()
       } else if (this.step === 3) {
-        if (this.isProductor !== "") this.$refs.stepper.next()
-      } else {
+        if (this.isProductor !== "") {
+          this.createNewEnterprise()
+          this.$refs.stepper.next()
+        }
+      } else if (this.step === 4) {
+        if (this.longDescription !== "" ||
+            this.shortDescription !== "" ||
+            this.companyNumber !== "") {
+          const response = await this.$store.dispatch("EnterpriseRegister/updateEnterpriseDetails", this.createEnterpriseDetails)
+          console.log(response)
+        }
         this.$refs.stepper.next()
       }
+    },
+    async createNewEnterprise () {
+      const response = await this.$store.dispatch("EnterpriseRegister/newEnterprise", this.generateEnterpriseObject)
+      console.log(response)
     }
     /*     onSelectFile () {
       const input = this.$refs.fileInput

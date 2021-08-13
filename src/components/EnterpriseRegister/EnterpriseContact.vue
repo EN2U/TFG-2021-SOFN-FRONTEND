@@ -26,7 +26,10 @@
         color="purple-12"
         label="Dirección de correo público"
         class="full-width q-pt-sm q-px-md"
-        hint="Este campo no puede estar vacio"
+        hint="Este campo no puede estar vacio y a de ser xxx@xxx.xx"
+        :rules="[val => !!val || 'Email is missing',
+                 val => emailPattern.test(val) || 'Email not valid'
+        ]"
         @input="$emit('update:email', $event)"
       >
         <template #prepend>
@@ -66,6 +69,13 @@ export default {
       type: String,
       default: ""
     }
+  },
+  data () {
+    return {
+      emailPattern: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/
+    }
+  },
+  methods: {
   }
 
 }

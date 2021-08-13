@@ -13,7 +13,7 @@
     "heroku-postbuild": "yarn && yarn build"
   },
   "dependencies": {
-    "@quasar/extras": "^1.0.0",
+    "@quasar/extras": "^1.10.10",
     "@vue/composition-api": "^1.0.5",
     "axios": "^0.21.1",
     "connect-history-api-fallback": "^1.6.0",

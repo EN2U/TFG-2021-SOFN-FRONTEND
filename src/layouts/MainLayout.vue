@@ -83,7 +83,7 @@ const linksData = [
     title: "Buscador",
     caption: "xd",
     icon: "search",
-    to: "search"
+    to: "/search"
   }
 ]
 

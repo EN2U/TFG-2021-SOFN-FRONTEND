@@ -10,19 +10,19 @@
     </div>
     <div class=" column items-center full-width">
       <q-uploader
-        ref="image"
-        inverted
-        color="secondary"
-        stack-label="Imagem Principal"
-        :v-model="product.attributes.image"
-        :url="product.attributes.image"
-        auto-expand
-        hide-upload-button
-        hide-upload-progress
-        no-thumbnails
-        @change="handleFileUpload()"
+        style="max-width: 300px"
+        url="/enterprise/logo"
+        label="Logo"
+        accept=".jpg, .png, image/*"
+        @rejected="onRejected"
       />
-      {{ image }}
+      <q-uploader
+        style="max-width: 300px"
+        url="/enterprise/banner"
+        label="Banner"
+        accept=".jpg, image/*"
+        @rejected="onRejected"
+      />
     </div>
   </div>
 </template>
@@ -34,20 +34,19 @@ export default {
   data () {
     return {
       image: "",
-      product: {
-        attributes: {
-          image: ""
-        }
-      }
+      url: process.env.BASE_URL
     }
   },
   methods: {
-    handleFileUpload () {
-      console.log("xd")
-      this.image = this.$refs.image.files[0]
+    onRejected (rejectedEntries) {
+      // Notify plugin needs to be installed
+      // https://quasar.dev/quasar-plugins/notify#Installation
+      this.$q.notify({
+        type: "negative",
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
     }
   }
-
 }
 
 </script>

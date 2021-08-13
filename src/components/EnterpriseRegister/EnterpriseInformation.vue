@@ -39,12 +39,12 @@
         color="purple-12"
         label="Ciudad"
         class="col-4 q-px-md"
-        :value="city"
+        :value="province"
         hint="Este campo no puede estar vacio"
-        @input="$emit('update:city', $event)"
+        @input="$emit('update:province', $event)"
       >
         <template #prepend>
-          <q-icon name="location_city" />
+          <q-icon name="location_province" />
         </template>
       </q-input>
       <q-input
@@ -105,7 +105,7 @@ export default {
       type: String,
       default: ""
     },
-    city: {
+    province: {
       type: String,
       default: ""
     },

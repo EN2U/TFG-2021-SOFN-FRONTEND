@@ -68,6 +68,10 @@ module.exports = function (/* ctx */) {
       // Options below are automatically set depending on the env, set them if you want to override
       // extractCSS: false,
 
+      env: {
+        BASE_URL: JSON.stringify(process.env.BASE_URL),
+        FRONT_URL: JSON.stringify(process.env.FRONT_URL)
+      },
       // https://v1.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
 
@@ -103,7 +107,14 @@ module.exports = function (/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ["Notify"]
+      plugins: ["Notify"],
+      globals: {
+        cordova: true,
+        __statics: true,
+        Capacitor: true,
+        chrome: true,
+        process: true
+      }
     },
 
     // animations: 'all', // --- includes all animations
@@ -123,8 +134,8 @@ module.exports = function (/* ctx */) {
         clientsClaim: true
       }, // only for GenerateSW
       manifest: {
-        name: "Quasar App",
-        short_name: "Quasar App",
+        name: "Sofn",
+        short_name: "Sofn",
         description: "Prototipo de sistema para la recopilación y estandarización para la planificación y evaluación de menús escolares saludables, sostenibles y de calidad",
         display: "standalone",
         orientation: "portrait",

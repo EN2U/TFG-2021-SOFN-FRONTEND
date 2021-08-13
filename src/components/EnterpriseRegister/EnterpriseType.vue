@@ -10,31 +10,37 @@
     </div>
     <div class="row full-width justify-around">
       <q-btn
-        color="grey-5"
+        :color="productor ? 'grey-5' : 'grey-3'"
         style="min-width: 200px; min-height: 200px; width: 45%"
-        @click="$emit('update:isProductor', 'productor')"
+        @click="setColor(true)"
       >
         <div class="fit column justify-center items-center">
           <q-icon
             name="agriculture"
             size="xl"
-            color="secondary"
+            :color="productor ? 'secondary' : 'black'"
           />
-          <span class="text-h6 text-bold">Soy un Productor</span>
+          <span
+            class="text-h6"
+            :class="productor ? 'text-bold text-secondary' : 'text-black'"
+          >Soy un Productor</span>
         </div>
       </q-btn>
       <q-btn
-        color="grey-5"
+        :color="noProductor ? 'grey-5' : 'grey-3'"
         style="min-width: 200px; min-height: 200px; width: 45%"
-        @click="$emit('update:isProductor', 'oProductor')"
+        @click="setColor(false)"
       >
         <div class="fit column justify-center items-center">
           <q-icon
             name="fmd_good"
             size="xl"
-            color="secondary"
+            :color="noProductor ? 'secondary' : 'black'"
           />
-          <span class="text-h6 text-bold">No soy un Productor</span>
+          <span
+            class="text-h6"
+            :class="noProductor ? 'text-bold text-secondary' : 'text-black'"
+          >No soy un Productor</span>
         </div>
       </q-btn>
     </div>
@@ -79,6 +85,25 @@ export default {
     isProductor: {
       type: String,
       default: ""
+    }
+  },
+  data () {
+    return {
+      productor: false,
+      noProductor: false
+    }
+  },
+  methods: {
+    setColor (isProductor) {
+      if (isProductor) {
+        this.productor = true
+        this.noProductor = false
+        this.$emit("update:isProductor", "productor")
+      } else {
+        this.noProductor = true
+        this.productor = false
+        this.$emit("update:isProductor", "noProductor")
+      }
     }
   }
 }
