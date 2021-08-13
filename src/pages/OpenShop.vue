@@ -1,5 +1,5 @@
 <template>
-  <div class="row bg-red-2 items-center">
+  <div class="row items-center">
     <q-img
       class="center"
       style="height: 400px"

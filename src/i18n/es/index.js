@@ -7,7 +7,7 @@ export default {
   email: "Correo",
   password: "Contraseña",
   login: {
-    title: "Login",
+    title: "SOFN",
     access: "Empezamos!"
   },
   signup: {

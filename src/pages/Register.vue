@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-red-2 row justify-center items-center">
+  <q-page class="row justify-center items-center">
     <div class="column items-center loginCardSize">
       <q-form
         :key="formActivator"
@@ -14,15 +14,15 @@
           class="column items-center full-width shadow-15"
         >
           <q-card-section
-            class="bg-red-5 flex justify-center fit"
+            class="flex justify-center fit"
           >
             <span
-              style="text-shadow: #000000 3px 0 10px;"
-              class="text-h4 text-white"
+              style=""
+              class="text-h4 q-pt-md"
               v-text="$t('signup.title')"
             />
           </q-card-section>
-          <q-card-section class="full-width">
+          <q-card-section class="q-px-xl full-width">
             <q-input
               v-model="email"
               class="q-mb-md"
@@ -81,7 +81,8 @@
           <q-card-actions class="q-px-lg justify-center full-width">
             <q-btn
               unelevated
-              color="red-5"
+              class="q-my-lg"
+              color="primary"
               size="lg"
               type="submit"
               style="width: 60%"

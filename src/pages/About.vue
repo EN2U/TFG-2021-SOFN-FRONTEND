@@ -1,5 +1,5 @@
 <template>
-  <q-page class="bg-red-2">
+  <q-page class="">
     <q-img
       class="center"
       style="height: 400px"
@@ -15,13 +15,13 @@
       class="row"
       style="height: 400px"
     >
-      <div class="col-6 flex justify-center items-center">
+      <div class="col-4 flex justify-center items-center">
         <q-img
           style="height: 350px; width: 40%"
           src="../assets/farmer.png"
         />
       </div>
-      <div class="col-6">
+      <div class="col-8">
         <h2 class="text-bold">
           E-commerce y buenos hábitos alimentarios
         </h2>

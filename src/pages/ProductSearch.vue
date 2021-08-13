@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pa-xl bg-red-2">
+  <q-page class="q-pa-xl ">
     <div class="row justify-center">
       <div class="q-pa-xl">
         <span class="text-h4">Busque, compare, y analice su alimentación!</span>

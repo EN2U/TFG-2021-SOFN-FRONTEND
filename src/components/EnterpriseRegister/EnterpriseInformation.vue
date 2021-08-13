@@ -14,6 +14,7 @@
         label="Seleccione una empresa"
         class="full-width q-px-md"
         :value="name"
+        hint="Este campo no puede estar vacio"
         @input="$emit('update:name', $event)"
       >
         <template #prepend>
@@ -27,6 +28,7 @@
         label="Primera dirección"
         class="col-6 q-px-md"
         :value="address1"
+        hint="Este campo no puede estar vacio"
         @input="$emit('update:address1', $event)"
       >
         <template #prepend>
@@ -38,6 +40,7 @@
         label="Ciudad"
         class="col-4 q-px-md"
         :value="city"
+        hint="Este campo no puede estar vacio"
         @input="$emit('update:city', $event)"
       >
         <template #prepend>
@@ -49,6 +52,7 @@
         label="Código postal"
         class="col-2 q-px-md"
         :value="zip"
+        hint="Este campo no puede estar vacio"
         @input="$emit('update:zip', $event)"
       >
         <template #prepend>
@@ -73,6 +77,7 @@
         label="País"
         class="col-6 q-px-md"
         :value="country"
+        hint="Este campo no puede estar vacio"
         @input="$emit('update:country', $event)"
       >
         <template #prepend>

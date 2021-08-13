@@ -1,10 +1,10 @@
 <template>
-  <q-page class="q-pa-md bg-red-2 flex justify-center items-center">
-    {{ step }}
+  <q-page class="q-pa-md flex justify-center items-center">
     <div style="width: 50%;">
       <q-stepper
         ref="stepper"
         v-model="step"
+        class="shadow-8"
         animated
         done-color="red-5"
         active-color="purple"
@@ -32,7 +32,11 @@
           icon="create_new_folder"
           :done="step > 2"
         >
-          <EnterpriseContact />
+          <EnterpriseContact
+            :contact.sync="contact"
+            :email.sync="email"
+            :phone.sync="phone"
+          />
         </q-step>
 
         <q-step
@@ -41,7 +45,7 @@
           icon="add_comment"
           :done="step > 3"
         >
-          <EnterpriseType />
+          <EnterpriseType :is-productor.sync="isProductor" />
         </q-step>
         <q-step
           :name="4"
@@ -121,11 +125,16 @@ export default {
       country: "",
       contact: "",
       email: "",
-      phone: ""
+      phone: "",
+      isProductor: ""
 
     }
   },
   methods: {
+    setProductor (val) {
+      this.isProductor = val
+      console.log(val, this.isProductor)
+    },
     evaluateStepper () {
       if (this.step === 1) {
         if (this.name !== "" &&
@@ -134,11 +143,14 @@ export default {
         this.zip !== "" &&
         this.country !== ""
         ) this.$refs.stepper.next()
-      }
-      if (this.step === 2) {
+      } else if (this.step === 2) {
         if (this.contact !== "" &&
         this.email !== "" &&
         this.phone !== "") this.$refs.stepper.next()
+      } else if (this.step === 3) {
+        if (this.isProductor !== "") this.$refs.stepper.next()
+      } else {
+        this.$refs.stepper.next()
       }
     }
     /*     onSelectFile () {

@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-header
-      class="flex bg-red-5"
+      class="flex bg-blue-grey-9"
       elevated
       style="height: 65px"
     >
@@ -26,7 +26,7 @@
       mini-to-overlay
       :width="255"
       :breakpoint="500"
-      content-class="bg-red-5"
+      content-class="bg-blue-grey-9"
       @mouseover="miniState = false"
       @mouseout="miniState = true"
     >

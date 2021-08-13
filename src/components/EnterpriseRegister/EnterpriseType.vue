@@ -12,12 +12,13 @@
       <q-btn
         color="grey-5"
         style="min-width: 200px; min-height: 200px; width: 45%"
+        @click="$emit('update:isProductor', 'productor')"
       >
         <div class="fit column justify-center items-center">
           <q-icon
             name="agriculture"
             size="xl"
-            color="red-5"
+            color="secondary"
           />
           <span class="text-h6 text-bold">Soy un Productor</span>
         </div>
@@ -25,12 +26,13 @@
       <q-btn
         color="grey-5"
         style="min-width: 200px; min-height: 200px; width: 45%"
+        @click="$emit('update:isProductor', 'oProductor')"
       >
         <div class="fit column justify-center items-center">
           <q-icon
             name="fmd_good"
             size="xl"
-            color="red-5"
+            color="secondary"
           />
           <span class="text-h6 text-bold">No soy un Productor</span>
         </div>
@@ -42,7 +44,7 @@
         class="q-pa-lg bg-grey-2 fle full-width"
       >
         <q-icon
-          color="red-5"
+          color="info"
           size="md"
           name="help"
         />
@@ -58,7 +60,7 @@
           class="q-pa-lg bg-grey-2 fle full-width"
         >
           <q-icon
-            color="red-5"
+            color="info"
             size="md"
             name="help"
           />
@@ -68,3 +70,16 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: "EnterpriseType",
+  props: {
+    isProductor: {
+      type: String,
+      default: ""
+    }
+  }
+}
+</script>

@@ -10,27 +10,36 @@
     </div>
     <div class="full-width">
       <q-input
+        :value="contact"
         color="purple-12"
         label="Nombre de contacto principal"
         class="full-width q-pt-sm q-px-md"
+        hint="Este campo no puede estar vacio"
+        @input="$emit('update:contact', $event)"
       >
         <template #prepend>
           <q-icon name="domain" />
         </template>
       </q-input>
       <q-input
+        :value="email"
         color="purple-12"
         label="Dirección de correo público"
         class="full-width q-pt-sm q-px-md"
+        hint="Este campo no puede estar vacio"
+        @input="$emit('update:email', $event)"
       >
         <template #prepend>
           <q-icon name="domain" />
         </template>
       </q-input>
       <q-input
+        :value="phone"
         color="purple-12"
         label="Teléfono de contacto"
         class="full-width q-pt-sm q-px-md"
+        hint="Este campo no puede estar vacio"
+        @input="$emit('update:phone', $event)"
       >
         <template #prepend>
           <q-icon name="domain" />
@@ -39,3 +48,25 @@
     </div>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: "EnterpriseContact",
+  props: {
+    contact: {
+      type: String,
+      default: ""
+    },
+    email: {
+      type: String,
+      default: ""
+    },
+    phone: {
+      type: String,
+      default: ""
+    }
+  }
+
+}
+</script>
