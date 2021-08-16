@@ -2,16 +2,17 @@
   <q-page class=" row justify-center items-center">
     <div class="column items-center loginCardSize">
       <q-form
-        class="full-width"
+        class="full-width q-ma-xl"
         @submit="login"
       >
         <q-card
           square
           bordered
+          style="width: 40%; min-width: 400px; min-height: 600px"
           class="column items-center full-width shadow-15"
         >
           <q-card-section
-            class="flex justify-center fit"
+            class="flex justify-center q-pt-lg fit"
           >
             <div class="column items-center">
               <span
@@ -25,32 +26,30 @@
               </span>
             </div>
           </q-card-section>
-          <q-card-section class=" full-width">
+          <q-card-section class="full-width">
             <q-form class="q-gutter-lg full-width">
               <q-input
                 v-model="email"
                 square
-                filled
                 clearable
                 color="red-5"
-                class="bg-white"
+                class="bg-white q-pt-lg"
                 type="email"
                 :label="$t('email')"
               />
               <q-input
                 v-model="password"
                 square
-                filled
                 clearable
                 color="red-5"
-                class="bg-white"
+                class="bg-white q-pt-lg"
                 type="password"
                 autocomplete="on"
                 :label="$t('password')"
               />
             </q-form>
           </q-card-section>
-          <q-card-actions class="q-px-lg justify-center full-width">
+          <q-card-actions class="q-px-lg q-pt-lg justify-center full-width">
             <q-btn
               unelevated
               color="primary"

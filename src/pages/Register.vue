@@ -2,7 +2,6 @@
   <q-page class="row justify-center items-center">
     <div class="column items-center loginCardSize">
       <q-form
-        :key="formActivator"
         class="q-gutter-lg full-width"
         no-error-focus
         greedy
@@ -11,21 +10,26 @@
         <q-card
           square
           bordered
+          style="width: 40%; min-width: 400px; min-height: 600px"
           class="column items-center full-width shadow-15"
         >
           <q-card-section
-            class="flex justify-center fit"
+            class="column items-center justify-center fit"
           >
             <span
               style=""
-              class="text-h4 q-pt-md"
+              class="text-h4 q-pt-lg"
               v-text="$t('signup.title')"
+            />
+            <span
+              class="text-subtitle2"
+              v-text="'¡Únase a nuestra comunidad!'"
             />
           </q-card-section>
           <q-card-section class="q-px-xl full-width">
             <q-input
               v-model="email"
-              class="q-mb-md"
+              class="q-mb-md q-pt-lg"
               color="blue-grey-10"
               type="email"
               clearable
@@ -44,10 +48,9 @@
             <q-input
               v-model="password"
               square
-              filled
               clearable
               color="red-5"
-              class="bg-white"
+              class="bg-white q-pt-lg"
               type="password"
               hint="Tamaño mínimo 7"
               :rules="[
@@ -62,10 +65,9 @@
             <q-input
               v-model="confirmPassword"
               square
-              filled
               clearable
               color="red-5"
-              class="bg-white"
+              class="bg-white q-pt-lg"
               type="password"
               autocomplete="on"
               hint="La contraseña a de ser igual a la anterior"
@@ -104,7 +106,6 @@ export default {
     return {
       email: "",
       password: "",
-      formActivator: 1,
       confirmPassword: ""
     }
   },
