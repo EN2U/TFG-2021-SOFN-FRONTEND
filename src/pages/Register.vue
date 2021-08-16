@@ -115,7 +115,7 @@ export default {
   },
   methods: {
     async saveUser () {
-      const res = await this.$store.dispatch("Register/signup", { email: this.email, password: this.password, confirmPassword: this.confirmPassword })
+      const res = await this.$store.dispatch("User/signup", { email: this.email, password: this.password, confirmPassword: this.confirmPassword })
       if (res.data.success) {
         this.$q.notify({
           message: res.data.msg,

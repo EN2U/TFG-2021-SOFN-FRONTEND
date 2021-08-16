@@ -1,4 +1,4 @@
-import RegisterSvc from "src/js/services/Register"
+import RegisterSvc from "src/js/services/User"
 
 export async function signup (context, payload) {
   try {
@@ -16,8 +16,13 @@ export async function signup (context, payload) {
 export async function login (context, payload) {
   try {
     const response = await RegisterSvc.login(payload)
-    console.log(response)
-    if (response.status === 200) return response
+    if (response.status === 200) {
+      context.commit("SET_USER_ID", response.data.user)
+      context.commit("SET_ROLE", response.data.role)
+      context.commit("SET_API_TOKEN", response.data.token)
+      context.commit("SET_EMAIL", response.data.email)
+      return response
+    }
   } catch (error) {
     if (error.response !== undefined) {
       console.log(error.response.status, error.response.error)
@@ -25,4 +30,11 @@ export async function login (context, payload) {
       console.log("Se ha producido un error")
     }
   }
+}
+
+export async function resetStore (context, payload) {
+  context.commit("SET_USER_ID", null)
+  context.commit("SET_ROLE", "")
+  context.commit("SET_API_TOKEN", null)
+  context.commit("SET_EMAIL", "")
 }

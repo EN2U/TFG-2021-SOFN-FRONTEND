@@ -56,6 +56,11 @@
 
 export default {
   name: "OpenShop",
+  mounted () {
+    if (!this.$store.getters["User/getRole"]) {
+      this.$router.push("/user/login")
+    }
+  },
 
   methods: {
     enterpriseRegister () {

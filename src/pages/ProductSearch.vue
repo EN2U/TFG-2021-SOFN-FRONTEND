@@ -26,17 +26,20 @@
         color="primary"
       />
       <div
-        v-if="openFoodFactsObject"
+        v-if="openFoodFactsObject !== undefined"
         class="full-width"
       >
         <div
+          v-if="openFoodFactsObject"
           class="q-mt-xl full-width row justify-around"
         >
           <div
             v-for="product in openFoodFactsObject.data"
             :key="product._id"
           >
-            <ProductCard :product-data="product" />
+            <ProductCard
+              :product-data="product"
+            />
           </div>
         </div>
       </div>
@@ -60,6 +63,9 @@ export default {
     }
   },
   async mounted () {
+    if (!this.$store.getters["User/getRole"]) {
+      this.$router.push("/user/login")
+    }
     this.openFoodFactsObject = await this.$store.dispatch("ProductSearch/getOpenFoodFactsProducts", { page: this.page })
     this.page += 1
     this.test = this.openFoodFactsObject.data.slice(0, 4)

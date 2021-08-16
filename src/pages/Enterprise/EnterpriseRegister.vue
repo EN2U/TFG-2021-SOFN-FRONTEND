@@ -65,7 +65,10 @@
           icon="manage_accounts"
           :done="step > 5"
         >
-          <EnterpriseImages />
+          <EnterpriseImages
+            :name="name"
+            :owner="contact"
+          />
         </q-step>
         <q-step
           :name="6"
@@ -73,14 +76,22 @@
           icon="add_comment"
           :done="step > 6"
         >
-          <EnterpriseSocial />
+          <EnterpriseSocial
+            :name="name"
+            :owner="contact"
+            :web.sync="web"
+            :twitter.sync="twitter"
+            :facebook.sync="facebook"
+            :instagram.sync="instagram"
+            :linkedin.sync="linkedin"
+          />
         </q-step>
         <template #navigation>
           <q-stepper-navigation>
             <q-btn
               color="deep-orange"
               :label="step === 6 ? 'Finish' : 'Continue'"
-              @click="step === 6 ? $router.push('/enterprise/') : evaluateStepper()"
+              @click="evaluateStepper()"
             />
             <q-btn
               v-if="step > 1"
@@ -134,7 +145,14 @@ export default {
 
       longDescription: "",
       shortDescription: "",
-      companyNumber: ""
+      companyNumber: "",
+
+      web: "",
+      twitter: "",
+      facebook: "",
+      instagram: "",
+      linkedin: ""
+
     }
   },
   computed: {
@@ -166,6 +184,23 @@ export default {
         short_description: this.shortDescription,
         long_description: this.longDescription
       }
+    },
+    createEnterpriseSocial () {
+      return {
+        owner: this.contact,
+        name: this.name,
+
+        website: this.web,
+        facebook: this.facebook,
+        twitter: this.twitter,
+        linkedin: this.linkedin,
+        instagram: this.instagram
+      }
+    }
+  },
+  mounted () {
+    if (!this.$store.getters["User/getRole"]) {
+      this.$router.push("/user/login")
     }
   },
   methods: {
@@ -197,28 +232,24 @@ export default {
           console.log(response)
         }
         this.$refs.stepper.next()
+      } else if (this.step === 6) {
+        if (this.web !== "" ||
+            this.linkedin !== "" ||
+            this.instagram !== "" ||
+            this.twitter !== "" ||
+            this.facebook !== "") {
+          const response = await this.$store.dispatch("EnterpriseRegister/updateEnterpriseSocial", this.createEnterpriseSocial)
+          console.log(response)
+        }
+        // this.$router.push("/enterprise/")
+      } else {
+        this.$refs.stepper.next()
       }
     },
     async createNewEnterprise () {
       const response = await this.$store.dispatch("EnterpriseRegister/newEnterprise", this.generateEnterpriseObject)
       console.log(response)
     }
-    /*     onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      this.FileImage = files[0]
-      if (files && files[0]) {
-        const reader = new FileReader()
-        reader.onload = e => {
-          this.imageData = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit("input", files[0])
-      }
-    },
-    choosepicture () {
-      this.$refs.fileInput.click()
-    } */
   }
 }
 </script>

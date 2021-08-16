@@ -25,3 +25,42 @@ export async function updateEnterpriseDetails (context, payload) {
     }
   }
 }
+
+export async function updateLogo (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.updateLogo(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
+
+export async function updateBanner (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.updateBanner(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
+
+export async function updateEnterpriseSocial (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.updateEnterpriseSocial(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}

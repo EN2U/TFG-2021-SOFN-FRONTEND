@@ -15,6 +15,11 @@ const routes = [
         component: () => import("src/pages/Login.vue")
       },
       {
+        path: "user/profile",
+        name: "profile",
+        component: () => import("src/pages/UserProfile")
+      },
+      {
         path: "user/register",
         name: "register",
         component: () => import("src/pages/Register.vue")
@@ -28,6 +33,11 @@ const routes = [
         path: "open-shop",
         name: "open-shop",
         component: () => import("src/pages/OpenShop.vue")
+      },
+      {
+        path: "shop-search",
+        name: "shop-search",
+        component: () => import("src/pages/ShopSearch.vue")
       },
       {
         path: "enterprise",

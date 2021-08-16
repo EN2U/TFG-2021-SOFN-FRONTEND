@@ -76,6 +76,7 @@
 </template>
 
 <script>
+
 export default {
   name: "Login",
   data () {
@@ -84,15 +85,17 @@ export default {
       password: ""
     }
   },
+
   methods: {
     async login () {
-      const res = await this.$store.dispatch("Register/login", { email: this.email, password: this.password })
+      const res = await this.$store.dispatch("User/login", { email: this.email, password: this.password })
       if (res.data.success) {
         this.$q.notify({
           message: res.data.msg,
           type: "positive",
           position: "top"
         })
+        this.$router.push("/search")
       } else {
         this.$q.notify({
           message: res.data.msg,

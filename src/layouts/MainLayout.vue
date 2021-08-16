@@ -9,15 +9,31 @@
         <q-toolbar-title>
           {{ $t("proyectTitle") }}
         </q-toolbar-title>
-        <EssentialLink
-          v-for="link in linksNavbar"
-          :key="link.title"
-          v-bind="link"
-        />
+        <div
+          v-if="!userRoles"
+          class="row"
+        >
+          <EssentialLink
+            v-for="link in unregisteredLinksNavbar"
+            :key="link.title"
+            v-bind="link"
+            @click="test"
+          />
+        </div>
+        <div
+          v-else
+          class="row"
+        >
+          <EssentialLink
+            v-for="link in registeredLinksNavbar"
+            :key="link.title"
+            v-bind="link"
+          />
+        </div>
       </q-toolbar>
     </q-header>
     <q-drawer
-      v-if="!($route.path.indexOf('/enterprise/') > -1 && !($route.path.indexOf('/enterprise/register') > -1))"
+      v-if="userRoles && !($route.path.indexOf('/enterprise/') > -1 && !($route.path.indexOf('/enterprise/register') > -1))"
       v-model="leftDrawerOpen"
       show-if-above
       bordered
@@ -52,20 +68,6 @@
 <script>
 import EssentialLink from "components/EssentialLink.vue"
 
-const linksNavbar = [
-  {
-    title: "About",
-    to: "/about"
-  },
-  {
-    title: "Login",
-    to: "/user/login"
-  },
-  {
-    title: "Register",
-    to: "/user/register"
-  }
-]
 const linksData = [
   {
     title: "Empresa",
@@ -84,6 +86,12 @@ const linksData = [
     caption: "xd",
     icon: "search",
     to: "/search"
+  },
+  {
+    title: "Buscador de tiendas",
+    caption: "Descubra las diferentes tiendas del sistema",
+    icon: "storefront",
+    to: "/shop-search"
   }
 ]
 
@@ -95,7 +103,46 @@ export default {
       miniState: true,
       leftDrawerOpen: true,
       essentialLinks: linksData,
-      linksNavbar: linksNavbar
+      unregisteredLinksNavbar: [
+        {
+          title: "About",
+          to: "/about"
+        },
+        {
+          title: "Login",
+          to: "/user/login"
+        },
+        {
+          title: "Register",
+          to: "/user/register"
+        }
+      ],
+      registeredLinksNavbar: [
+        {
+          title: "About",
+          to: "/about"
+        },
+        {
+          title: this.$store.getters["User/getEmail"] ? this.$store.getters["User/getEmail"] : "",
+          to: "/user/profile"
+        },
+        {
+          title: "Cerrar sesión",
+          to: "/user/login",
+          clear: true
+        }
+      ]
+    }
+  },
+  computed: {
+    userRoles () {
+      return this.$store.getters["User/getRole"]
+    }
+  },
+  methods: {
+    test (link) {
+      console.log("xd")
+      console.log(link)
     }
   }
 }
