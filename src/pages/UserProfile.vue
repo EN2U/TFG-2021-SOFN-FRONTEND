@@ -12,6 +12,7 @@
         autocapitalize="off"
         autocomplete="off"
         spellcheck="false"
+        @reset="deleteUser"
         @submit="updateUser"
       >
         <span
@@ -92,7 +93,7 @@
             class="q-my-lg"
             color="negative"
             size="lg"
-            type="submit"
+            type="reset"
             style="width: 40%; min-width: 190px;"
             label="Eliminar"
           />
@@ -124,8 +125,23 @@ export default {
   },
   methods: {
     async updateUser () {
-      console.log("lets go")
       const res = await this.$store.dispatch("User/update", { email: this.email, password: this.password, newPassword: this.newPassword, id: this.$store.getters["User/getUserId"] })
+      if (res.data.success) {
+        this.$q.notify({
+          message: res.data.msg,
+          type: "positive",
+          position: "top"
+        })
+      } else {
+        this.$q.notify({
+          message: res.data.error,
+          type: "negative",
+          position: "top"
+        })
+      }
+    },
+    async deleteUser () {
+      const res = await this.$store.dispatch("User/deleteUser", { password: this.password, id: this.$store.getters["User/getUserId"] })
       if (res.data.success) {
         this.$q.notify({
           message: res.data.msg,

@@ -49,6 +49,25 @@ export async function login (context, payload) {
   }
 }
 
+export async function deleteUser (context, payload) {
+  try {
+    console.log(payload)
+    const response = await UserSvc.deleteUser(payload)
+    if (response.status === 200) {
+      context.commit("SET_USER_ID", null)
+      context.commit("SET_ROLE", "")
+      context.commit("SET_API_TOKEN", null)
+      context.commit("SET_EMAIL", "")
+      return response
+    }
+  } catch (error) {
+    if (error.response !== undefined) {
+      return error.response
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
 export async function resetStore (context, payload) {
   context.commit("SET_USER_ID", null)
   context.commit("SET_ROLE", "")
