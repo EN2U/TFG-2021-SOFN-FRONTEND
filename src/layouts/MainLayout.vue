@@ -7,7 +7,10 @@
     >
       <q-toolbar>
         <q-toolbar-title>
-          {{ $t("proyectTitle") }}
+          <q-btn
+            @click="$router.push('/')"
+            v-text="$t('proyectTitle')"
+          />
         </q-toolbar-title>
         <div
           v-if="!userRoles"
@@ -49,8 +52,18 @@
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
-        />
+          class="text-grey-8 overflow-hidden"
+        >
+          <router-link
+            class="flex justify-center"
+            to="/"
+          >
+            <q-img
+              src="appIcons/SOFN.png"
+              style="width:80%; cursor:pointer; height: 100px"
+            />
+          </router-link>
+        </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
           :key="link.title"
