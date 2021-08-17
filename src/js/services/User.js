@@ -9,7 +9,6 @@ export default {
     return Vue.prototype.$axios.post("/user/login", payload)
   },
   update (payload) {
-    payload = _.pick(payload, ["email", "password", "newPassword"])
-    return Vue.prototype.$axios.put(`/user/${payload.id}`, payload)
+    return Vue.prototype.$axios.put(`/user/${payload.id}`, _.pick(payload, ["email", "password", "newPassword"]))
   }
 }

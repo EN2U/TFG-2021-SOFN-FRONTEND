@@ -20,7 +20,6 @@
             v-for="link in unregisteredLinksNavbar"
             :key="link.title"
             v-bind="link"
-            @click="test"
           />
         </div>
         <div
@@ -150,12 +149,6 @@ export default {
   computed: {
     userRoles () {
       return this.$store.getters["User/getRole"]
-    }
-  },
-  methods: {
-    test (link) {
-      console.log("xd")
-      console.log(link)
     }
   }
 }

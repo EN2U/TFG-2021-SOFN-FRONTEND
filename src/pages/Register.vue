@@ -123,10 +123,9 @@ export default {
           type: "positive",
           position: "top"
         })
-        this.$router.push("/user/login")
       } else {
         this.$q.notify({
-          message: res.data.msg,
+          message: res.data.error,
           type: "negative",
           position: "top"
         })

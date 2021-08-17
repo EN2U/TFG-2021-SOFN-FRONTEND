@@ -97,7 +97,7 @@ export default {
         this.$router.push("/search")
       } else {
         this.$q.notify({
-          message: res.data.msg,
+          message: res.data.error,
           type: "negative",
           position: "top"
         })

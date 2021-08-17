@@ -77,15 +77,24 @@
           </template>
         </q-input>
 
-        <q-card-actions class="q-px-lg justify-center full-width">
+        <q-card-actions class="q-px-lg row justify-center full-width">
           <q-btn
             unelevated
             class="q-my-lg"
             color="primary"
             size="lg"
             type="submit"
-            style="width: 60%"
-            label="Actualizar datos"
+            style="width: 40%; min-width: 190px;"
+            label="Actualizar"
+          />
+          <q-btn
+            unelevated
+            class="q-my-lg"
+            color="negative"
+            size="lg"
+            type="submit"
+            style="width: 40%; min-width: 190px;"
+            label="Eliminar"
           />
         </q-card-actions>
       </q-form>
@@ -126,7 +135,7 @@ export default {
         this.$router.push("/user/login")
       } else {
         this.$q.notify({
-          message: res.data.msg,
+          message: res.data.error,
           type: "negative",
           position: "top"
         })

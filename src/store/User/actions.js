@@ -6,7 +6,7 @@ export async function signup (context, payload) {
     if (response.status === 201) return response
   } catch (error) {
     if (error.response !== undefined) {
-      console.log(error.response.status, error.response.error)
+      return error.response
     } else {
       console.log("Se ha producido un error")
     }
@@ -17,11 +17,13 @@ export async function update (context, payload) {
   try {
     const response = await UserSvc.update(payload)
     if (response.status === 200) {
+      context.commit("SET_EMAIL", response.data.email)
       return response
     }
   } catch (error) {
     if (error.response !== undefined) {
-      console.log(error.response.status, error.response.error)
+      console.log(error.response.status, error.response.data.error)
+      return error.response
     } else {
       console.log("Se ha producido un error")
     }
@@ -40,7 +42,7 @@ export async function login (context, payload) {
     }
   } catch (error) {
     if (error.response !== undefined) {
-      console.log(error.response.status, error.response.error)
+      return error.response
     } else {
       console.log("Se ha producido un error")
     }

@@ -5,7 +5,7 @@
     class="text-white"
     :active-class="title === 'Cerrar sesión' ? '' : 'text-black bg-yellow-14'"
     :to="to"
-    @click="test"
+    @click="logout"
   >
     <q-item-section
       v-if="icon"
@@ -54,7 +54,7 @@ export default {
     }
   },
   methods: {
-    test () {
+    logout () {
       if (this.clear) {
         this.$store.dispatch("User/resetStore")
         this.$q.notify({
@@ -62,7 +62,6 @@ export default {
           type: "positive",
           position: "top"
         })
-        console.log("clear")
       }
     }
   }
