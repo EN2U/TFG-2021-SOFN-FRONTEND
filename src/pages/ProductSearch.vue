@@ -64,6 +64,7 @@ export default {
   },
   async mounted () {
     if (!this.$store.getters["User/getRole"]) {
+      console.log(":)")
       this.$router.push("/user/login")
     }
     this.openFoodFactsObject = await this.$store.dispatch("ProductSearch/getOpenFoodFactsProducts", { page: this.page })

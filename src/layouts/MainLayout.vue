@@ -89,7 +89,7 @@ const linksData = [
   },
   {
     title: "Nombre de la empresa",
-    caption: "Acceda a su perfil de empresa",
+    caption: "Acceda al perfil de empresa",
     icon: "perm_identity",
     to: "/enterprise/dashboard"
   },
@@ -101,9 +101,14 @@ const linksData = [
   },
   {
     title: "Buscador de tiendas",
-    caption: "Descubra las diferentes tiendas del sistema",
     icon: "storefront",
     to: "/shop-search"
+  },
+  {
+    title: "Bedca",
+    to: "/bedca",
+    icon: "food_bank",
+    caption: "Base de datos de bedca"
   }
 ]
 

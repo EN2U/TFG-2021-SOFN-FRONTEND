@@ -35,6 +35,11 @@ const routes = [
         component: () => import("src/pages/OpenShop.vue")
       },
       {
+        path: "bedca",
+        name: "bedca",
+        component: () => import("src/pages/Bedca.vue")
+      },
+      {
         path: "shop-search",
         name: "shop-search",
         component: () => import("src/pages/ShopSearch.vue")
@@ -63,13 +68,13 @@ const routes = [
             path: "products/new",
             name: "new",
             component: () => import("src/pages/Enterprise/EnterpriseNewProduct.vue")
+          },
+          {
+            path: "register",
+            name: "enterprise-register",
+            component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
           }
         ]
-      },
-      {
-        path: "enterprise/register",
-        name: "enterprise-register",
-        component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
       },
       {
         path: "search",

@@ -5,6 +5,7 @@ import createPersistedState from "vuex-persistedstate"
 import ProductSearch from "./ProductSearch"
 import User from "./User"
 import EnterpriseRegister from "./EnterpriseRegister"
+import Bedca from "./Bedca"
 
 // import example from './module-example'
 
@@ -24,7 +25,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       ProductSearch,
       User,
-      EnterpriseRegister
+      EnterpriseRegister,
+      Bedca
     },
 
     // enable strict mode (adds overhead!)
