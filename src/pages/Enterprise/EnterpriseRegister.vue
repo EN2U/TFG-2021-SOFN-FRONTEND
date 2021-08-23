@@ -171,7 +171,7 @@ export default {
         owner: this.contact,
         email: this.email,
         contact_phone: Number(this.phone),
-        user_id: "6112ba394ba4edcce075f715",
+        user_id: this.$store.getters["User/getUserId"],
         is_productor: this.isProductor === "productor"
       }
     },
@@ -240,8 +240,8 @@ export default {
             this.facebook !== "") {
           const response = await this.$store.dispatch("EnterpriseRegister/updateEnterpriseSocial", this.createEnterpriseSocial)
           console.log(response)
+          this.$router.push("/enterprise/")
         }
-        // this.$router.push("/enterprise/")
       } else {
         this.$refs.stepper.next()
       }

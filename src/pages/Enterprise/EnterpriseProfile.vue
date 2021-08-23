@@ -1,9 +1,20 @@
 <template>
   <div class="full-width q-px-xl column">
     <div class="row q-pa-md bg-red-2">
-      <span class="text-bold text-h5">NOMBRE DE LA EMPRESA</span>
+      <q-select
+        v-model="selectedEnterprise"
+        :options="userEnterpriseProfile"
+        option-label="name"
+        filled
+        class="text-bold text-h5"
+        style="min-width: 400px"
+        hint="Seleccione su empresa"
+      />
     </div>
-    <div class="row full-width">
+    <div
+      v-if="selectedEnterprise"
+      class="row full-width"
+    >
       <q-splitter
         v-model="splitterModel"
         class="q-pt-lg full-width"
@@ -62,29 +73,69 @@
             transition-next="jump-down"
           >
             <q-tab-panel name="primaryDetails">
-              <PrimaryDetails />
+              <PrimaryDetails
+                :key="selectedEnterprise._id"
+                :name.sync="selectedEnterprise.name"
+                :productor.sync="selectedEnterprise.is_productor"
+                :uid="selectedEnterprise._id"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
 
             <q-tab-panel name="address">
-              <Address />
+              <Address
+                :key="selectedEnterprise._id"
+                :country.sync="selectedEnterprise.address.country"
+                :first-address.sync="selectedEnterprise.address.first_address"
+                :zip-code.sync="selectedEnterprise.address.zip_code"
+                :second-address.sync="selectedEnterprise.address.second_address"
+                :province.sync="selectedEnterprise.address.province"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
 
             <q-tab-panel name="contact">
-              <Contact />
+              <Contact
+                :key="selectedEnterprise._id"
+                :email.sync="selectedEnterprise.email"
+                :phone.sync="selectedEnterprise.contact_phone"
+                :website.sync="selectedEnterprise.website"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
             <q-tab-panel name="social">
-              <Social />
+              <Social
+                :key="selectedEnterprise._id"
+                :facebook.sync="selectedEnterprise.facebook"
+                :twitter.sync="selectedEnterprise.twitter"
+                :linkedin.sync="selectedEnterprise.linkedin"
+                :instagram.sync="selectedEnterprise.instagram"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
             <q-tab-panel name="about">
-              <About />
+              <About
+                :key="selectedEnterprise._id"
+                :long-description.sync="selectedEnterprise.long_description"
+                :short-description.sync="selectedEnterprise.show_description"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
 
             <q-tab-panel name="images">
-              <Images />
+              <Images
+                :key="selectedEnterprise._id"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
 
             <q-tab-panel name="user">
-              <User />
+              <User
+                :key="selectedEnterprise._id"
+                :owner.sync="selectedEnterprise.owner"
+                :email.sync="selectedEnterprise.email"
+                @clickUpdateEnterprise="updateEnterprise"
+              />
             </q-tab-panel>
           </q-tab-panels>
         </template>
@@ -103,6 +154,7 @@ import Contact from "components/EnterpriseProfile/Contact"
 import User from "components/EnterpriseProfile/User"
 
 export default {
+  name: "EnterpriseProfile",
   components: {
     About,
     User,
@@ -115,7 +167,33 @@ export default {
   data () {
     return {
       tab: "primaryDetails",
-      splitterModel: 20
+      splitterModel: 20,
+      selectedEnterprise: null,
+      userEnterpriseProfile: []
+    }
+  },
+  async mounted () {
+    const response = await this.$store.dispatch("EnterpriseRegister/getEnterpriseProfile", { user_id: this.$store.getters["User/getUserId"] })
+    this.userEnterpriseProfile = response.data.enterprise
+  },
+  methods: {
+    async updateEnterprise () {
+      const response = await this.$store.dispatch("EnterpriseRegister/updateEnterprise", this.selectedEnterprise)
+      if (response.data.success) {
+        this.$q.notify({
+          message: response.data.msg,
+          type: "positive",
+          position: "top"
+        })
+        const res = await this.$store.dispatch("EnterpriseRegister/getEnterpriseProfile", { user_id: this.$store.getters["User/getUserId"] })
+        this.userEnterpriseProfile = res.data.enterprise
+      } else {
+        this.$q.notify({
+          message: response.data.error,
+          type: "negative",
+          position: "top"
+        })
+      }
     }
   }
 }

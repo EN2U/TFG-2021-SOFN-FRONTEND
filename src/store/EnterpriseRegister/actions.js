@@ -64,3 +64,29 @@ export async function updateEnterpriseSocial (context, payload) {
     }
   }
 }
+
+export async function getEnterpriseProfile (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.getEnterpriseProfile(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
+
+export async function updateEnterprise (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.updateEnterprise(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}

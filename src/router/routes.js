@@ -16,7 +16,7 @@ const routes = [
       },
       {
         path: "user/profile",
-        name: "profile",
+        name: "user profile",
         component: () => import("src/pages/UserProfile")
       },
       {
@@ -45,6 +45,11 @@ const routes = [
         component: () => import("src/pages/ShopSearch.vue")
       },
       {
+        path: "enterprise/register",
+        name: "enterprise-register",
+        component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
+      },
+      {
         path: "enterprise",
         name: "enterprise",
         component: () => import("layouts/EnterpriseLayout.vue"),
@@ -56,7 +61,7 @@ const routes = [
           },
           {
             path: "profile",
-            name: "profile",
+            name: "enterprise profile",
             component: () => import("src/pages/Enterprise/EnterpriseProfile.vue")
           },
           {
@@ -68,11 +73,6 @@ const routes = [
             path: "products/new",
             name: "new",
             component: () => import("src/pages/Enterprise/EnterpriseNewProduct.vue")
-          },
-          {
-            path: "register",
-            name: "enterprise-register",
-            component: () => import("src/pages/Enterprise/EnterpriseRegister.vue")
           }
         ]
       },

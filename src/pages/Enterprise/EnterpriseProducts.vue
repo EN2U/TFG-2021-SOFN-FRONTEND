@@ -1,7 +1,17 @@
 <template>
   <div class="full-width column q-px-xl">
     <div class="full-width bg-red-2 q-pa-md row items-center justify-between">
-      <span>Productos</span>
+      <div class="row q-pa-md bg-red-2">
+        <q-select
+          v-model="selectedEnterprise"
+          :options="userEnterpriseProfile"
+          option-label="name"
+          filled
+          class="text-bold text-h5"
+          style="min-width: 400px"
+          hint="Seleccione su empresa"
+        />
+      </div>
       <q-btn @click="$router.push('products/new')">
         <q-icon
           name="add"
@@ -12,7 +22,10 @@
         <span>Añadir un producto</span>
       </q-btn>
     </div>
-    <div class="full-width row justify-between q-pt-lg">
+    <div
+      v-if="selectedEnterprise"
+      class="full-width row justify-between q-pt-lg"
+    >
       <div>
         <q-input
           class="q-mr-xl"
@@ -60,3 +73,19 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: "EnterpriseProduct",
+  data () {
+    return {
+      userEnterpriseProfile: [],
+      selectedEnterprise: null
+    }
+  },
+  async mounted () {
+    const response = await this.$store.dispatch("EnterpriseRegister/getEnterpriseProfile", { user_id: this.$store.getters["User/getUserId"] })
+    this.userEnterpriseProfile = response.data.enterprise
+  }
+}
+</script>

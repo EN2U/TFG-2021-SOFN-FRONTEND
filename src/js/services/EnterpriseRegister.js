@@ -16,5 +16,11 @@ export default {
   },
   updateEnterpriseSocial (payload) {
     return Vue.prototype.$axios.put("/enterprise/social", payload)
+  },
+  getEnterpriseProfile (payload) {
+    return Vue.prototype.$axios.get(`/enterprise/${payload.user_id}`)
+  },
+  updateEnterprise (payload) {
+    return Vue.prototype.$axios.put("/enterprise/", payload)
   }
 }
