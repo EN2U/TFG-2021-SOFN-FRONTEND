@@ -1,5 +1,5 @@
 export default {
   rowsPerPageOptions () {
-    return [5, 10, 15, 25, 50, 0]
+    return [5, 10, 15, 24, 50, 0]
   }
 }

@@ -54,6 +54,15 @@
         </div>
       </template>
     </q-table>
+    <q-inner-loading :showing="visible">
+      <q-spinner-gears
+        size="50px"
+        color="primary"
+        transition-show="fade"
+        transition-hide="fade"
+      />
+      <span v-text="'Recogiendo los datos de BEDCA...'" />
+    </q-inner-loading>
   </div>
 </template>
 
@@ -69,10 +78,10 @@ export default {
       loadingTable: false,
       visibleColumns: [],
       filter: "",
-
+      visible: false,
       bedcaList: [],
       pagination: {
-        rowsPerPage: 15
+        rowsPerPage: 24
       }
     }
   },
@@ -116,15 +125,16 @@ export default {
   },
   async mounted () {
     this.loadingTable = true
+    this.visible = true
     this.visibleColumns = this.columns.map(c => c.name)
 
     await this.getBedcaList()
+    this.visible = false
     this.loadingTable = false
   },
   methods: {
     async getBedcaList () {
       this.bedcaList = await this.$store.dispatch("Bedca/getAllList")
-      console.log(this.bedcaList)
     },
     onTableColumnVisibilityToggle (col) {
       const index = this.visibleColumns.indexOf(col.name)
