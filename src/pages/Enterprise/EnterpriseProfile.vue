@@ -1,6 +1,6 @@
 <template>
   <div class="full-width q-px-xl column">
-    <div class="row q-pa-md bg-red-2">
+    <div class="row q-pa-md bg-red-1">
       <q-select
         v-model="selectedEnterprise"
         :options="userEnterpriseProfile"
@@ -173,8 +173,8 @@ export default {
     }
   },
   async mounted () {
-    const response = await this.$store.dispatch("EnterpriseRegister/getEnterpriseProfile", { user_id: this.$store.getters["User/getUserId"] })
-    this.userEnterpriseProfile = response.data.enterprise
+    this.userEnterpriseProfile = await this.$store.dispatch("EnterpriseRegister/getEnterpriseProfile", { user_id: this.$store.getters["User/getUserId"] })
+    this.selectedEnterprise = this.userEnterpriseProfile[0]
   },
   methods: {
     async updateEnterprise () {

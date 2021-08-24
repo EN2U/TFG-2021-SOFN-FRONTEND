@@ -35,7 +35,6 @@ export default ({ app, router, store, Vue }) => {
 
   axiosInstance.interceptors.request.use(function (config) {
     // Add any endpoint that doesn't need authorization in the condition.
-    console.log("request", config)
 
     if (config.url !== "token") {
       const token = "bearer " + store.getters["User/getApiToken"]
@@ -50,7 +49,6 @@ export default ({ app, router, store, Vue }) => {
 
   axiosInstance.interceptors.response.use(function (config) {
     // Add any endpoint that doesn't need authorization in the condition.
-    console.log("response", config)
     if (config.url !== "token") {
       const token = "bearer " + store.getters["User/getApiToken"]
       config.headers.Authorization = token

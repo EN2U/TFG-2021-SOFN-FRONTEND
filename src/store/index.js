@@ -3,6 +3,7 @@ import Vuex from "vuex"
 import createPersistedState from "vuex-persistedstate"
 
 import ProductSearch from "./ProductSearch"
+import ProductCategory from "./ProductCategory"
 import User from "./User"
 import EnterpriseRegister from "./EnterpriseRegister"
 import Bedca from "./Bedca"
@@ -24,6 +25,7 @@ export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
       ProductSearch,
+      ProductCategory,
       User,
       EnterpriseRegister,
       Bedca

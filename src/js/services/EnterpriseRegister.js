@@ -20,7 +20,13 @@ export default {
   getEnterpriseProfile (payload) {
     return Vue.prototype.$axios.get(`/enterprise/${payload.user_id}`)
   },
+  getEnterpriseById (payload) {
+    return Vue.prototype.$axios.post("/enterprise/getSelected", payload)
+  },
   updateEnterprise (payload) {
     return Vue.prototype.$axios.put("/enterprise/", payload)
+  },
+  saveNewProduct (payload) {
+    return Vue.prototype.$axios.post("/enterprise/newProduct", payload)
   }
 }

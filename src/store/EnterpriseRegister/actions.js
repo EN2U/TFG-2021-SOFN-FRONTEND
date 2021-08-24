@@ -68,7 +68,19 @@ export async function updateEnterpriseSocial (context, payload) {
 export async function getEnterpriseProfile (context, payload) {
   try {
     const response = await EnterpriseRegisterSvc.getEnterpriseProfile(payload)
-    if (response.status === 200) return response
+    if (response.status === 200) return response.data.enterprise
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
+export async function getEnterpriseById (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.getEnterpriseById(payload)
+    if (response.status === 200) return response.data.enterprise
   } catch (error) {
     if (error.response !== undefined) {
       console.log(error.response.status, error.response)
@@ -81,6 +93,19 @@ export async function getEnterpriseProfile (context, payload) {
 export async function updateEnterprise (context, payload) {
   try {
     const response = await EnterpriseRegisterSvc.updateEnterprise(payload)
+    if (response.status === 200) return response
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}
+
+export async function saveNewProduct (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.saveNewProduct(payload)
     if (response.status === 200) return response
   } catch (error) {
     if (error.response !== undefined) {
