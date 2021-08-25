@@ -87,6 +87,10 @@ export default {
     dataLength: {
       type: Number,
       default: 0
+    },
+    maxItems: {
+      type: Number,
+      default: 0
     }
   },
   data () {
@@ -107,6 +111,9 @@ export default {
     },
     lastActualRow () {
       const lastActualEstimatedRow = this.paginationList.rowsPerPage * this.paginationList.page
+      if (lastActualEstimatedRow === this.dataLength && this.dataLength < this.maxItems) {
+        this.$emit("getMoreData")
+      }
       return lastActualEstimatedRow > this.dataLength ? this.dataLength : lastActualEstimatedRow
     }
   },
