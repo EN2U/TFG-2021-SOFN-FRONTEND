@@ -44,14 +44,13 @@
       >
         <q-table
           :data="openFoodFactsObject"
-          class="my-sticky-header-table"
+          class="my-sticky-virtscroll-table"
           :columns="columns"
           :filter="filter"
           :visible-columns="visibleColumns"
           :loading="loadingTable"
           separator="horizontal"
           bordered
-          style="max-height: 600px"
           :pagination.sync="pagination"
           :rows-per-page-options="$utils.rowsPerPageOptions()"
           :no-data-label="'No hay datos disponibles'"
@@ -111,9 +110,13 @@
         </q-table>
       </div>
     </div>
-    <q-inner-loading :showing="visible">
+    <q-inner-loading
+      style="z-index:1"
+      :showing="visible"
+    >
       <q-spinner-gears
         size="50px"
+        class="q-pt-md"
         color="primary"
         transition-show="fade"
         transition-hide="fade"
@@ -189,16 +192,24 @@ export default {
       if (!this.isFilterByProduct) {
         await this.$store.dispatch("ProductSearch/getOpenFoodFactsProducts", { page: this.page }).then((element) => {
           this.maxItems = element.maxItems
-          element.data.forEach(product => {
-            this.openFoodFactsObject.push(product)
-          })
+          if (element.data && element.data.lenght !== 0) {
+            element.data.forEach(product => {
+              this.openFoodFactsObject.push(product)
+            })
+          } else {
+            this.openFoodFactsObject = []
+          }
         })
       } else {
-        await this.$store.dispatch("ProductSearch/getOpenFoodFactsCategoryProducts", { page: this.page, product: this.product }).then((element) => {
+        await this.$store.dispatch("ProductSearch/findOpenFoodFactsProduct", { page: this.page, product: this.product }).then((element) => {
           this.maxItems = element.maxItems
-          element.data.forEach(product => {
-            this.openFoodFactsObject.push(product)
-          })
+          if (element.data && element.data.lenght !== 0) {
+            element.data.forEach(product => {
+              this.openFoodFactsObject.push(product)
+            })
+          } else {
+            this.openFoodFactsObject = []
+          }
         })
       }
       this.loadingTable = false
@@ -232,14 +243,22 @@ export default {
 </script>
 
 <style lang="sass">
-  .my-sticky-header-table
-    height: calc(100vh - 55px - 2em)
+  .my-sticky-virtscroll-table
     /* height or max-height is important */
-    // height: 90vh
+    height: 700px
+
+    .q-table__top,
+    .q-table__bottom,
+    thead tr:first-child th /* bg color is important for th; just specify one */
+      background-color: #fff
 
     thead tr th
       position: sticky
       z-index: 1
+    /* this will be the loading indicator */
+    thead tr:last-child th
+      /* height of all previous header rows */
+      top: 48px
     thead tr:first-child th
-    top: 0
+      top: 0
 </style>

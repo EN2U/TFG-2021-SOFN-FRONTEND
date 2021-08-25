@@ -2,6 +2,8 @@
   <div class="q-pa-xl">
     <q-table
       :data="bedcaList"
+      class="my-sticky-virtscroll-table"
+      style="height: 85vh"
       :columns="columns"
       :filter="filter"
       :visible-columns="visibleColumns"

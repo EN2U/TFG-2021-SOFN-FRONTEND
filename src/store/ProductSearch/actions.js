@@ -13,9 +13,9 @@ export async function getOpenFoodFactsProducts (context, payload) {
   }
 }
 
-export async function getOpenFoodFactsCategoryProducts (context, payload) {
+export async function findOpenFoodFactsProduct (context, payload) {
   try {
-    const response = await ProductSearchSvc.getOpenFoodFactsCategoryProducts(payload)
+    const response = await ProductSearchSvc.findOpenFoodFactsProduct(payload)
     if (response.status === 200 || response.status === 204) return response.data
   } catch (error) {
     if (error.response !== undefined) {
