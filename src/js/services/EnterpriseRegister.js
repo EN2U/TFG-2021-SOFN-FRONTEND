@@ -8,7 +8,6 @@ export default {
     return Vue.prototype.$axios.put("/enterprise/details", payload)
   },
   updateLogo (payload) {
-    console.log(payload)
     return Vue.prototype.$axios.put("/enterprise/logo", payload)
   },
   updateBanner (payload) {
@@ -28,5 +27,8 @@ export default {
   },
   saveNewProduct (payload) {
     return Vue.prototype.$axios.post("/enterprise/newProduct", payload)
+  },
+  getAllEnterprises (payload) {
+    return Vue.prototype.$axios.get("/enterprise/")
   }
 }

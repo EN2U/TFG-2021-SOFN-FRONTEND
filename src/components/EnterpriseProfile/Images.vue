@@ -2,53 +2,24 @@
   <div class="q-px-xl column full-width ">
     <span class="text-h6 text-center text-light-green">IMAGENES</span>
     <q-separator color="grey-4" />
-    <div class="q-pt-lg row items-center">
-      <span class="col-2 text-subtitle2">Logo 300x300</span>
-      <div class="row col-8">
-        <div
-          class="q-pl-xl row items-center"
-          @click="choosepicture"
-        >
-          <q-btn
-            class="hint bg-purple-12 text-white"
-            style="cursor: pointer; max-height: 50px"
-          >
-            <span v-if="!imageName">Escoge tu logo (300 X 300px)</span>
-            <span v-else>{{ imageName }}</span>
-          </q-btn>
-          <input
-            ref="fileInput"
-            hidden
-            class="file-input"
-            type="file"
-            @input="onSelectFile"
-          >
-        </div>
+    <div class="row justify-around full-width q-pt-xl">
+      <div>
+        <q-uploader
+          style="max-width: 400px"
+          label="Logo"
+          accept=".jpg, .png, image/*"
+          @added="saveLogo"
+          @rejected="onRejected"
+        />
       </div>
-    </div>
-
-    <div class="q-pt-lg row items-center">
-      <span class="col-2 text-subtitle2">Banner 1260x260</span>
-      <div class="row col-8">
-        <div
-          class="q-pl-xl row items-center"
-          @click="choosepicture"
-        >
-          <q-btn
-            class="hint bg-purple-12 text-white"
-            style="cursor: pointer; max-height: 50px"
-          >
-            <span v-if="!imageName">Escoge tu banner (1260 X 260px)</span>
-            <span v-else>{{ imageName }}</span>
-          </q-btn>
-          <input
-            ref="fileInput"
-            hidden
-            class="file-input"
-            type="file"
-            @input="onSelectFile"
-          >
-        </div>
+      <div>
+        <q-uploader
+          style="max-width: 400px"
+          label="Banner"
+          accept=".jpg, image/*"
+          @added="saveBanner"
+          @rejected="onRejected"
+        />
       </div>
     </div>
   </div>
@@ -57,30 +28,65 @@
 <script>
 
 export default {
+  name: "EnterpriseProfileImage",
+  props: {
+    name: {
+      type: String,
+      default: ""
+    },
+    owner: {
+      type: String,
+      default: ""
+    }
+  },
   data () {
     return {
-      step: 1,
-      imageData: null,
-      imageName: null
+      logo: "",
+      banner: ""
     }
   },
   methods: {
-    onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      this.FileImage = files[0].name
-      this.imageName = this.FileImage
-      if (files && files[0]) {
-        const reader = new FileReader()
-        reader.onload = e => {
-          this.imageData = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit("input", files[0])
+    onRejected (rejectedEntries) {
+      // Notify plugin needs to be installed
+      // https://quasar.dev/quasar-plugins/notify#Installation
+      this.$q.notify({
+        type: "negative",
+        message: `${rejectedEntries.length} file(s) did not pass validation constraints`
+      })
+    },
+    saveLogo (val) {
+      const image = new Blob(val, { type: val[0].type })
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onloadend = async () => {
+        this.logo = reader.result
+        this.notification(await this.$store.dispatch("EnterpriseRegister/updateLogo", { logo: reader.result, name: this.name, owner: this.owner }))
       }
     },
-    choosepicture () {
-      this.$refs.fileInput.click()
+    saveBanner (val) {
+      const image = new Blob(val, { type: val[0].type })
+      const reader = new FileReader()
+      reader.readAsDataURL(image)
+      reader.onloadend = async () => {
+        this.banner = reader.result
+        this.notification(await this.$store.dispatch("EnterpriseRegister/updateBanner", { banner: reader.result, name: this.name, owner: this.owner }))
+      }
+    },
+    notification (res) {
+      console.log(res)
+      if (res.data.success) {
+        this.$q.notify({
+          message: res.data.msg,
+          type: "positive",
+          position: "top"
+        })
+      } else {
+        this.$q.notify({
+          message: res.data.error,
+          type: "negative",
+          position: "top"
+        })
+      }
     }
   }
 }

@@ -60,7 +60,7 @@
                   dense
                   class="col-10"
                   debounce="300"
-                  :placeholder="$t('search')"
+                  label="Busque datos en la tabla"
                 >
                   <template #append>
                     <q-icon name="search" />

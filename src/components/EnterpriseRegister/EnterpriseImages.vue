@@ -23,10 +23,6 @@
         @added="saveBanner"
         @rejected="onRejected"
       />
-      <img
-        :src="logo"
-        alt=""
-      >
     </div>
   </div>
 </template>

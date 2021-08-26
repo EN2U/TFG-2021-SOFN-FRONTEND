@@ -228,8 +228,7 @@ export default {
         if (this.longDescription !== "" ||
             this.shortDescription !== "" ||
             this.companyNumber !== "") {
-          const response = await this.$store.dispatch("EnterpriseRegister/updateEnterpriseDetails", this.createEnterpriseDetails)
-          console.log(response)
+          this.notification(await this.$store.dispatch("EnterpriseRegister/updateEnterpriseDetails", this.createEnterpriseDetails))
         }
         this.$refs.stepper.next()
       } else if (this.step === 6) {
@@ -238,8 +237,7 @@ export default {
             this.instagram !== "" ||
             this.twitter !== "" ||
             this.facebook !== "") {
-          const response = await this.$store.dispatch("EnterpriseRegister/updateEnterpriseSocial", this.createEnterpriseSocial)
-          console.log(response)
+          this.notification(await this.$store.dispatch("EnterpriseRegister/updateEnterpriseSocial", this.createEnterpriseSocial))
           this.$router.push("/enterprise/")
         }
       } else {
@@ -247,8 +245,22 @@ export default {
       }
     },
     async createNewEnterprise () {
-      const response = await this.$store.dispatch("EnterpriseRegister/newEnterprise", this.generateEnterpriseObject)
-      console.log(response)
+      this.notification(await this.$store.dispatch("EnterpriseRegister/newEnterprise", this.generateEnterpriseObject))
+    },
+    notification  (res) {
+      if (res.data.success) {
+        this.$q.notify({
+          message: res.data.msg,
+          type: "positive",
+          position: "top"
+        })
+      } else {
+        this.$q.notify({
+          message: res.data.error,
+          type: "negative",
+          position: "top"
+        })
+      }
     }
   }
 }

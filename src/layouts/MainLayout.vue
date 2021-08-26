@@ -82,33 +82,33 @@ import EssentialLink from "components/EssentialLink.vue"
 
 const linksData = [
   {
-    title: "Empresa",
-    caption: "Abrir mi tienda",
+    title: "FAQS",
+    caption: "Como abrir mi tienda",
     to: "/open-shop",
     icon: "business"
   },
   {
-    title: "Nombre de la empresa",
-    caption: "Acceda al perfil de empresa",
+    title: "Dashboard",
+    caption: "Acceda a sus tiendas",
     icon: "perm_identity",
     to: "/enterprise/dashboard"
   },
   {
     title: "Buscador",
-    caption: "xd",
+    caption: "Productos Open Food Facts",
     icon: "search",
     to: "/search"
+  },
+  {
+    title: "Bedca",
+    caption: "Productos de Bedca",
+    to: "/bedca",
+    icon: "food_bank"
   },
   {
     title: "Buscador de tiendas",
     icon: "storefront",
     to: "/shop-search"
-  },
-  {
-    title: "Bedca",
-    to: "/bedca",
-    icon: "food_bank",
-    caption: "Base de datos de bedca"
   }
 ]
 

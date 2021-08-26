@@ -115,3 +115,16 @@ export async function saveNewProduct (context, payload) {
     }
   }
 }
+
+export async function getAllEnterprises (context, payload) {
+  try {
+    const response = await EnterpriseRegisterSvc.getAllEnterprises(payload)
+    if (response.status === 200) return response.data.enterprises
+  } catch (error) {
+    if (error.response !== undefined) {
+      console.log(error.response.status, error.response)
+    } else {
+      console.log("Se ha producido un error")
+    }
+  }
+}

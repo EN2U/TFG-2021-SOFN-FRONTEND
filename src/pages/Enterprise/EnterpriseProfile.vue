@@ -125,6 +125,8 @@
             <q-tab-panel name="images">
               <Images
                 :key="selectedEnterprise._id"
+                :name="selectedEnterprise.name"
+                :owner="selectedEnterprise.owner"
                 @clickUpdateEnterprise="updateEnterprise"
               />
             </q-tab-panel>
