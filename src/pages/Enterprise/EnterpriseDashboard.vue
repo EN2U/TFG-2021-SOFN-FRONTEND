@@ -10,7 +10,10 @@
         <span class="text-bold">Su tienda online</span>
       </q-card-section>
       <q-card-section>
-        <q-btn class="full-width bg-primary text-white">
+        <q-btn
+          class="full-width bg-primary text-white"
+          @click="$router.push('/shop-search')"
+        >
           <span>Visualice Empresa</span>
           <q-icon name="navigate_next" />
         </q-btn>

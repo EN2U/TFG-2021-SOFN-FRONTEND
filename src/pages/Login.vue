@@ -94,7 +94,6 @@ export default {
           type: "positive",
           position: "top"
         })
-        console.log(":9")
         this.$router.push("/search")
       } else {
         this.$q.notify({

@@ -1,29 +1,3 @@
-/* import axios from "axios"
-
-export default async ({ store, Vue }) => {
-  const axiosInstance = axios.create({
-    baseURL: process.env.BASE_URL ? process.env.BASE_URL.replace(/"/g, "") : ""
-  })
-
-  axiosInstance.interceptors.request.use((config) => {
-    const token = localStorage.getItem("apiToken")
-    console.log("xd", config)
-    if (token) {
-      config.headers.Authorization = `Bearer ${store.getters["User/getApiToken"]}`
-      console.log(config)
-    }
-    console.log("xd")
-    return config
-  },
-  (error) => {
-    console.log("xd")
-
-    return Promise.reject(error)
-  })
-
-  Vue.prototype.$axios = axiosInstance
-} */
-
 import axios from "axios"
 
 export default ({ app, router, store, Vue }) => {

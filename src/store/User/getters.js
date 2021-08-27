@@ -8,7 +8,6 @@ export function getApiToken (state) {
   return state.apiToken
 }
 export function getEmail (state) {
-  console.log(state.email)
   return state.email
 }
 export function getIsLogged (state) {
