@@ -1,7 +1,7 @@
 <template>
   <q-dialog
     :value="openModal"
-    persistent
+    @hide="$emit('update:openModal', false)"
   >
     <q-card
       class="full-width"
@@ -123,21 +123,16 @@
           :data="enterprise.product"
           class="my-sticky-virtscroll-table"
           :columns="columns"
-          :filter="filter"
-          :visible-columns="visibleColumns"
-          :loading="loadingTable"
           separator="horizontal"
           bordered
-          :pagination.sync="pagination"
-          :rows-per-page-options="$utils.rowsPerPageOptions()"
           :no-data-label="'No hay datos disponibles'"
           row-key="_id"
-          :hide-bottom="openFoodFactsObject && openFoodFactsObject.length !== 0"
+          style="max-height: 350px"
         />
       </q-card-section>
       <q-card-actions class="row justify-end">
         <q-btn
-          size="xs"
+          size="sm"
           label="Salir"
           color="red"
           @click="$emit('update:openModal', false)"
@@ -165,9 +160,9 @@ export default {
       return [
         { name: "name", label: "Nombre", align: "center", field: "name", sortable: true },
         { name: "description", label: "Descripcion", align: "center", field: "description", sortable: true },
-        { name: "unit_size", label: "Cantidad por unidad", align: "center", field: "unit_size", sortable: true },
-        { name: "unit_type", label: "Tipo de unidad", align: "center", field: "unit_type", sortable: true },
         { name: "category", label: "Categoría del producto", align: "center", field: "category", sortable: true },
+        { name: "unit_type", label: "Tipo de unidad", align: "center", field: "unit_type", sortable: true },
+        { name: "unit_size", label: "Cantidad por unidad", align: "center", field: "unit_size", sortable: true },
         { name: "price", label: "Precio por unidad", align: "center", field: "price", sortable: true },
         { name: "ammount", label: "Cantidad total del producto", align: "center", field: "ammount", sortable: true }
       ]

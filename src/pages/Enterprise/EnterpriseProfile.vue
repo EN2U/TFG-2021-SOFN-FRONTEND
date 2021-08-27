@@ -1,6 +1,9 @@
 <template>
   <div class="full-width q-px-xl column">
-    <div class="row q-pa-md bg-red-1">
+    <div
+      v-if="selectedEnterprise"
+      class="row q-pa-md bg-red-1"
+    >
       <q-select
         v-model="selectedEnterprise"
         :options="userEnterpriseProfile"
@@ -142,6 +145,23 @@
           </q-tab-panels>
         </template>
       </q-splitter>
+    </div>
+    <div v-else>
+      <div class="text-center full-width">
+        <span
+          class="text-h5"
+          v-text="'No tiene registrada ninguna tienda. '"
+        />
+      </div>
+      <div class="text-center full-width q-pt-xl">
+        <q-btn
+          color="info"
+          rounded
+          @click="$router.push('/open-shop')"
+        >
+          <span v-text="'Click para ir a la página del formulario'" />
+        </q-btn>
+      </div>
     </div>
   </div>
 </template>

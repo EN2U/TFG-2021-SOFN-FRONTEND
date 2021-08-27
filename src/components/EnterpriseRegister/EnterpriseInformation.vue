@@ -11,7 +11,7 @@
     <div class="full-width">
       <q-input
         color="purple-12"
-        label="Seleccione una empresa"
+        label="Nombre de su empresa"
         class="full-width q-px-md"
         :value="name"
         hint="Este campo no puede estar vacio"
@@ -38,19 +38,19 @@
       <q-input
         color="purple-12"
         label="Ciudad"
-        class="col-4 q-px-md"
+        class="col-3 q-px-md"
         :value="province"
         hint="Este campo no puede estar vacio"
         @input="$emit('update:province', $event)"
       >
         <template #prepend>
-          <q-icon name="location_province" />
+          <q-icon name="location_city" />
         </template>
       </q-input>
       <q-input
         color="purple-12"
         label="Código postal"
-        class="col-2 q-px-md"
+        class="col-3 q-px-md"
         :value="zip"
         hint="Este campo no puede estar vacio"
         @input="$emit('update:zip', $event)"

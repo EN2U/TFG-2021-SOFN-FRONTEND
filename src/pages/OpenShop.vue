@@ -26,9 +26,7 @@
         class="row q-py-xl bg-grey-2"
         style="height: 64%; min-width: 400px"
       >
-        <div class="col-3 flex justify-center full-height">
-          :d
-        </div>
+        <div class="col-3 flex justify-center full-height" />
         <div class="col-6 full-height flex justify-center ">
           <div
             class="q-pa-lg q-px-xl text-h5 text-center"
@@ -47,9 +45,7 @@
             v-text="'Para empezar, solo deberá crear su tienda siguiendo los pasos del formulario a continuación'"
           />
         </div>
-        <div class="col-3 full-height flex justify-center ">
-          :D
-        </div>
+        <div class="col-3 full-height flex justify-center " />
       </div>
       <div class="column items-center">
         <div class="q-mb-md">

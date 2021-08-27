@@ -1,6 +1,7 @@
 <template>
   <div class="full-width column q-px-xl">
     <div
+      v-if="selectedEnterprise"
       class="q-mt-lg"
     >
       <q-table
@@ -85,6 +86,23 @@
         </template>
       </q-table>
     </div>
+    <div v-else>
+      <div class="text-center full-width">
+        <span
+          class="text-h5"
+          v-text="'No tiene registrada ninguna tienda. '"
+        />
+      </div>
+      <div class="text-center full-width q-pt-xl">
+        <q-btn
+          color="info"
+          rounded
+          @click="$router.push('/open-shop')"
+        >
+          <span v-text="'Click para ir a la página del formulario'" />
+        </q-btn>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,9 +132,9 @@ export default {
       return [
         { name: "name", label: "Nombre", align: "center", field: "name", sortable: true },
         { name: "description", label: "Descripcion", align: "center", field: "description", sortable: true },
-        { name: "unit_size", label: "Cantidad por unidad", align: "center", field: "unit_size", sortable: true },
-        { name: "unit_type", label: "Tipo de unidad", align: "center", field: "unit_type", sortable: true },
         { name: "category", label: "Categoría del producto", align: "center", field: "category", sortable: true },
+        { name: "unit_type", label: "Tipo de unidad", align: "center", field: "unit_type", sortable: true },
+        { name: "unit_size", label: "Cantidad por unidad", align: "center", field: "unit_size", sortable: true },
         { name: "price", label: "Precio por unidad", align: "center", field: "price", sortable: true },
         { name: "ammount", label: "Cantidad total del producto", align: "center", field: "ammount", sortable: true }
       ]

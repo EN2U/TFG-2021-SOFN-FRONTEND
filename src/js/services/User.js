@@ -12,7 +12,6 @@ export default {
     return Vue.prototype.$axios.put(`/user/${payload.id}`, _.pick(payload, ["email", "password", "newPassword"]))
   },
   deleteUser (payload) {
-    console.log(payload.password)
     return Vue.prototype.$axios.delete(`/user/${payload.id}`, {
       data: {
         password: payload.password

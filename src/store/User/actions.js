@@ -51,7 +51,6 @@ export async function login (context, payload) {
 
 export async function deleteUser (context, payload) {
   try {
-    console.log(payload)
     const response = await UserSvc.deleteUser(payload)
     if (response.status === 200) {
       context.commit("SET_USER_ID", null)

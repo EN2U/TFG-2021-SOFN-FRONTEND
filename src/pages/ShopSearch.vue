@@ -108,12 +108,11 @@ export default {
       filterShop: "",
       filteredEnterprises: [],
       openModal: false,
-      selectedEnterprise: []
+      selectedEnterprise: {}
     }
   },
   async mounted () {
     this.enterprises = await this.$store.dispatch("EnterpriseRegister/getAllEnterprises")
-    console.log(this.enterprises)
     this.filteredEnterprises = this.enterprises
   },
   methods: {
@@ -126,7 +125,6 @@ export default {
       this.filterShop = ""
     },
     openEnterpriseModal (enterprise) {
-      console.log("xd")
       this.selectedEnterprise = enterprise
       this.openModal = true
     }

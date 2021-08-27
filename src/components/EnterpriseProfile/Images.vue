@@ -73,7 +73,6 @@ export default {
       }
     },
     notification (res) {
-      console.log(res)
       if (res.data.success) {
         this.$q.notify({
           message: res.data.msg,
