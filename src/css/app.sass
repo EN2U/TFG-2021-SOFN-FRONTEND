@@ -1,1 +1,13 @@
 // app global css in SCSS form
+  .q-dialog.fullscreen.dialog-custom-fullscreen
+    z-index: 1500
+
+.q-dialog.fullscreen.dialog-custom-fullscreen > .q-dialog__inner > div
+  margin-left: 55px
+  margin-top: 55px 
+  width: calc( 100vw - 55px )
+  height: calc( 100vh - 55px )
+
+.q-dialog.fullscreen.dialog-custom-fullscreen.drawer-closed > .q-dialog__inner > div
+  margin-left: 0px 
+  width: 100vw
