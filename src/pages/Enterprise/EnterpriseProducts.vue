@@ -20,10 +20,6 @@
         :hide-bottom="selectedEnterprise.product.lenght !== 0"
       >
         <template #top-left>
-          <div
-            class="text-h4 q-ma-md"
-            v-text="'Datos provistos por BEDCA'"
-          />
           <div class="full-width bg-red-1 row items-center justify-between">
             <div class="row q-pa-md bg-red-1">
               <q-select
